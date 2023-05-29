@@ -9,6 +9,7 @@ To install this plugin, go to [Releases](https://github.com/alextrevisan/LPCAnim
 
 Inside your Godot Project folder, create a folder named `addons` and extract the zip file inside it.
 
+![image](https://raw.githubusercontent.com/alextrevisan/LPCAnimatedSprite2D/main/addons-tree.png)
 
 ## Getting Started
 
@@ -17,10 +18,19 @@ Inside your Godot Project folder, create a folder named `addons` and extract the
 - Open your project in Godot Editor
 - Go to Project > Project Settings... > Plugins
 - You should see LPCAnimatedSprite Plugin. On the right side, check the "Enable" box
-- 
+
+![image](https://raw.githubusercontent.com/alextrevisan/LPCAnimatedSprite2D/main/plugin.png)
+
 ## Use the plugin functions
 
-You now have access to a new Node called `LPCAnimatedSprite2D`, which you can use.
+You now have access to a new Node called `LPCAnimatedSprite2D`, which you can use
+Add it to the scene tree
+
+![image](https://raw.githubusercontent.com/alextrevisan/LPCAnimatedSprite2D/main/new%20node.png)
+
+Then add your spritesheet with the names:
+
+![image](https://raw.githubusercontent.com/alextrevisan/LPCAnimatedSprite2D/main/create_lpc.gif)
 
 On the parent node you can call the animations:
 
