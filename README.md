@@ -43,6 +43,12 @@ func _ready():
 	player.play(LPCAnimatedSprite2D.LPCAnimation.WALK_UP)
 ```
 
+## Version number
+
+I choose this type of version to match the Godot version plus the release version number of the plugin:
+
+4.0.3.1 -> Godot version 4.0.3 + Release version 1
+
 ## Contributing
 
 Contributions are very welcome.
