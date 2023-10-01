@@ -143,6 +143,10 @@ enum LPCAnimation {
 	IDLE_RIGHT
 }
 
+func _ready():
+	if Engine.is_editor_hint() == false:
+		LoadAnimations()
+		
 func play(animation: LPCAnimation):
 	var sprites = get_children()
 	for sprite in sprites:
