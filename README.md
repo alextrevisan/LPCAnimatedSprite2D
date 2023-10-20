@@ -7,7 +7,7 @@ With this addon you simply add a LPC spritesheet to a character and it automatic
 
 To install this plugin, go to [Releases](https://github.com/alextrevisan/LPCAnimatedSprite2D/releases) and download the latest version.
 
-Inside your Godot Project folder, create a folder named `addons` and extract the zip file inside it.
+Extract the zip file inside it your Godot Project folder.
 
 ![image](https://raw.githubusercontent.com/alextrevisan/LPCAnimatedSprite2D/main/addons-tree.png)
 
