@@ -1,11 +1,11 @@
 PACKAGE_NAME := LPCAnimatedSprite.zip
-VERSION := $$(cat LPCAnimatedSprite/plugin.cfg | grep -o -P '(?<=version\=\").*(?=\")')
+VERSION := $$(cat addons/LPCAnimatedSprite/plugin.cfg | grep -o -P '(?<=version\=\").*(?=\")')
 
 version:
 	@echo $(VERSION)
 
 package:
-	@zip -r $(PACKAGE_NAME) ./LPCAnimatedSprite/
+	@zip -r $(PACKAGE_NAME) ./addons
 
 publish: package
 	@git tag -a "v$(VERSION)" -m "Release version $(VERSION)" || true
