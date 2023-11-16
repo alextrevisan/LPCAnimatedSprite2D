@@ -43,6 +43,23 @@ func _ready():
 	player.play(LPCAnimatedSprite2D.LPCAnimation.WALK_UP)
 ```
 
+## Support for Oversized Weapons
+Just replace the the LPCSpriteSheet with the OversizedLPCSpriteSheet on the panel and use it same as LPCSpriteSheet
+
+Currently the animations supported are:
+ - SLASH_UP
+ - SLASH_LEFT
+ - SLASH_DOWN
+ - SLASH_RIGHT
+
+You will need 4 sprites for the oversized weapons to work properly:
+- longsword
+- longsword_behind
+- longsword_attack_slash
+- longsword_attack_slash_behind
+
+These need to be ordered manually on the sprite panel when creating the sprites
+
 ## Version number
 
 I choose this type of version to match the Godot version plus the release version number of the plugin:

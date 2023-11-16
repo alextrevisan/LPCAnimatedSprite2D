@@ -1,0 +1,2 @@
+extends LPCSpriteSheet
+class_name OversizedLPCSpriteSheet

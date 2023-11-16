@@ -32,6 +32,13 @@ var AnimationData:Array[LPCAnimationData] = [
 	LPCAnimationData.new(1,"IDLE_RIGHT",11,false)
 ]
 
+var OversizedAnimationData:Array[LPCAnimationData] = [
+	LPCAnimationData.new(6,"SLASH_UP",0,false),
+	LPCAnimationData.new(6,"SLASH_LEFT",1,false),
+	LPCAnimationData.new(6,"SLASH_DOWN",2,false),
+	LPCAnimationData.new(6,"SLASH_RIGHT",3,false),
+]
+
 @export var SpriteSheets:Array[LPCSpriteSheet]
 
 #yeah, unfortunatly repeating above string list
@@ -94,9 +101,13 @@ func _ready():
 		LoadAnimations()
 		
 func play(animation: LPCAnimation):
-	var sprites = get_children()
+	var sprites = get_children() as Array[AnimatedSprite2D]
 	for sprite in sprites:
-		sprite.play(AnimationData[animation].Name)
+		if sprite.sprite_frames.has_animation(AnimationData[animation].Name):
+			sprite.visible = true
+			sprite.play(AnimationData[animation].Name)
+		else:
+			sprite.visible = false
 
 func _notification(what):
 	if what == NOTIFICATION_EDITOR_POST_SAVE:
@@ -113,9 +124,12 @@ func LoadAnimations():
 		remove_child(child)
 		
 	for spriteSheet in SpriteSheets:
+		if spriteSheet == null:
+			push_warning("There are LPCSpriteSheets that are <empty> in the LPCAnimatedSprite2D panel")
+			continue
 		var animatedSprite = AnimatedSprite2D.new()
 		animatedSprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-		var spriteFrames = CreateSprites(spriteSheet.SpriteSheet)
+		var spriteFrames = CreateSprites(spriteSheet)
 		animatedSprite.frames = spriteFrames
 		add_child(animatedSprite)
 		if spriteSheet.Name == null || spriteSheet.Name == "":
@@ -123,21 +137,22 @@ func LoadAnimations():
 		else:
 			animatedSprite.name = spriteSheet.Name
 		animatedSprite.owner = get_tree().edited_scene_root
-		animatedSprite.play(AnimationData[DefaultAnimation].Name)
+		play(DefaultAnimation)
 
-func CreateSprites(spriteSheet:Texture):
+func CreateSprites(spriteSheet:LPCSpriteSheet):
 	var spriteFrames = SpriteFrames.new()
 	spriteFrames.remove_animation("default")
-	for animationIndex in AnimationData.size():
-		var data = AnimationData[animationIndex]
-		var animationFrameCount = AnimationData[animationIndex].FrameCount
-		var animationSpriteRow = AnimationData[animationIndex].Row
-		var animationLoop = AnimationData[animationIndex].Loop
-		AddAnimation(spriteSheet, spriteFrames, AnimationData[animationIndex])
+	
+	if spriteSheet is OversizedLPCSpriteSheet:
+		for animationIndex in OversizedAnimationData.size():
+			AddAnimation(spriteSheet, spriteFrames, OversizedAnimationData[animationIndex])
+	else:
+		for animationIndex in AnimationData.size():
+			AddAnimation(spriteSheet, spriteFrames, AnimationData[animationIndex])
 	return spriteFrames
 	
-func AddAnimation(spriteSheet:Texture, spriteFrames:SpriteFrames, animationData:LPCAnimationData):
-	if spriteSheet == null:
+func AddAnimation(spriteSheet:LPCSpriteSheet, spriteFrames:SpriteFrames, animationData:LPCAnimationData):
+	if spriteSheet == null || spriteSheet.SpriteSheet == null:
 		return
 	if spriteFrames.has_animation(animationData.Name):
 		spriteFrames.clear(animationData.Name)
@@ -147,8 +162,11 @@ func AddAnimation(spriteSheet:Texture, spriteFrames:SpriteFrames, animationData:
 		if "WALK" in animationData.Name && col == 0:
 			continue
 		var atlasTexture = AtlasTexture.new()
-		atlasTexture.atlas = spriteSheet
-		atlasTexture.region = Rect2(64*col,64*animationData.Row,64,64)
+		atlasTexture.atlas = spriteSheet.SpriteSheet
+		var spriteSize:int = 64
+		if spriteSheet is OversizedLPCSpriteSheet:
+			spriteSize = 192
+		atlasTexture.region = Rect2(spriteSize*col,spriteSize*animationData.Row,spriteSize,spriteSize)
 		spriteFrames.add_frame(animationData.Name, atlasTexture, 0.5)
 	spriteFrames.set_animation_loop(animationData.Name, animationData.Loop)
 	return spriteFrames
