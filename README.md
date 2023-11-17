@@ -44,19 +44,7 @@ func _ready():
 ```
 
 ## Support for Oversized Weapons
-Just replace the the LPCSpriteSheet with the OversizedLPCSpriteSheet on the panel and use it same as LPCSpriteSheet
-
-Currently the animations supported are:
- - SLASH_UP
- - SLASH_LEFT
- - SLASH_DOWN
- - SLASH_RIGHT
-
-You will need 4 sprites for the oversized weapons to work properly:
-- longsword
-- longsword_behind
-- longsword_attack_slash
-- longsword_attack_slash_behind
+Just select the appropriate Sprite Type
 
 If using component sprites rather than a a pre-built spritesheet, pay attention to the order in which they are configured as it will influence visibility.
 
