@@ -58,7 +58,7 @@ You will need 4 sprites for the oversized weapons to work properly:
 - longsword_attack_slash
 - longsword_attack_slash_behind
 
-These need to be ordered manually on the sprite panel when creating the sprites
+If using component sprites rather than a a pre-built spritesheet, pay attention to the order in which they are configured as it will influence visibility.
 
 ## Version number
 
