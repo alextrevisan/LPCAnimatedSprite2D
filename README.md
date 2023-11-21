@@ -43,6 +43,11 @@ func _ready():
 	player.play(LPCAnimatedSprite2D.LPCAnimation.WALK_UP)
 ```
 
+## Support for Oversized Weapons
+Just select the appropriate Sprite Type
+
+If using component sprites rather than a a pre-built spritesheet, pay attention to the order in which they are configured as it will influence visibility.
+
 ## Version number
 
 I choose this type of version to match the Godot version plus the release version number of the plugin:
