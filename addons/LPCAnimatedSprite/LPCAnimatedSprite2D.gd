@@ -39,11 +39,12 @@ func _ready():
 	if Engine.is_editor_hint() == false:
 		LoadAnimations()
 		
-func play(animation: LPCAnimation):
+func play(animation: LPCAnimation, fps: float = 5.0):
 	var sprites = get_children() as Array[AnimatedSprite2D]
 	for sprite in sprites:
 		if sprite.sprite_frames.has_animation(AnimationNames[animation]):
 			sprite.visible = true
+			sprite.sprite_frames.set_animation_speed(AnimationNames[animation], fps)
 			sprite.play(AnimationNames[animation])
 		else:
 			sprite.visible = false
