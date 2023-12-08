@@ -3,6 +3,8 @@ extends Node2D
 
 class_name LPCAnimatedSprite2D
 
+signal animation_over()
+
 @export var SpriteSheets:Array[LPCSpriteSheet]
 @export var DefaultAnimation:LPCAnimation = LPCAnimation.IDLE_DOWN
 
@@ -40,14 +42,24 @@ func _ready():
 		LoadAnimations()
 		
 func play(animation: LPCAnimation, fps: float = 5.0):
+	var signal_flag: bool = false
+	var total_duration: float = 0
 	var sprites = get_children() as Array[AnimatedSprite2D]
 	for sprite in sprites:
 		if sprite.sprite_frames.has_animation(AnimationNames[animation]):
 			sprite.visible = true
 			sprite.sprite_frames.set_animation_speed(AnimationNames[animation], fps)
 			sprite.play(AnimationNames[animation])
+			if not signal_flag:
+				var speed: float = sprite.sprite_frames.get_animation_speed(AnimationNames[animation])
+				var count: float = float(sprite.sprite_frames.get_frame_count(AnimationNames[animation]))
+				total_duration = count / speed
+				signal_flag = true
 		else:
 			sprite.visible = false
+	if signal_flag:
+		await get_tree().create_timer(total_duration).timeout
+		animation_over.emit()
 
 func _notification(what):
 	if what == NOTIFICATION_EDITOR_POST_SAVE:
