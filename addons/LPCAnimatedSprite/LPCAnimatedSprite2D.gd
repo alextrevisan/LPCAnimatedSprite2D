@@ -9,8 +9,8 @@ class_name LPCAnimatedSprite2D
 
 var unified_sprite_sheet:LPCSpriteSheet
 var AnimationNames:Array
-var sprite_frames:SpriteFrames = SpriteFrames.new()
-var animatedSprite = AnimatedSprite2D.new()
+var sprite_frames:SpriteFrames
+var animatedSprite: AnimatedSprite2D
 
 enum SpriteTypeEnum {
 	Normal,
@@ -50,6 +50,8 @@ enum LPCAnimation {
 }
 
 func _ready():
+	sprite_frames = SpriteFrames.new()
+	animatedSprite = AnimatedSprite2D.new()
 	if Engine.is_editor_hint() == false:
 		LoadAnimations()
 		
@@ -86,50 +88,34 @@ func LoadAnimations():
 		else:
 			# assuming all spritesheet textures of same dimensions as those of the first.
 			# May be an invalid assumption, as I have no data and can't test - so TBC.
-			var viewport_RID: RID = RenderingServer.viewport_create()
-			var viewport_size: Vector2 = SpriteSheets[0].SpriteSheet.get_size()
-			RenderingServer.viewport_set_size(viewport_RID, viewport_size.x, viewport_size.y)
-			
-			var canvas_RID: RID = RenderingServer.canvas_create()
-			RenderingServer.viewport_attach_canvas(viewport_RID,canvas_RID)
-			
-			var RID_array:Array[RID]
-			
-			var rect:Rect2 = Rect2(0,0,viewport_size.x, viewport_size.y)
-			var draw_index:int=0
+			var size: Vector2 = SpriteSheets[0].SpriteSheet.get_size()
+			var viewport = SubViewport.new()
+			viewport.disable_3d = true
+			viewport.size = size
+			viewport.transparent_bg = true
 			
 			for sheet in SpriteSheets:
-				var canvas_item_RID = RenderingServer.canvas_item_create()
-				var image_RID = RenderingServer.texture_2d_create(sheet.SpriteSheet.get_image())
-				RenderingServer.canvas_item_add_texture_rect(canvas_item_RID, rect, image_RID)
-				RenderingServer.canvas_item_set_draw_index(canvas_item_RID,draw_index)
-				draw_index += 1
-				RenderingServer.canvas_set_item_mirroring(canvas_RID,image_RID, Vector2(0,0))
-				RID_array.append(canvas_item_RID)
-				RID_array.append(image_RID)
-			#var texture2d_RID: RID = RenderingServer.texture_2d_layered_create(image_array,RenderingServer.TEXTURE_LAYERED_2D_ARRAY)
-
-			RenderingServer.viewport_set_update_mode(viewport_RID, RenderingServer.VIEWPORT_UPDATE_ONCE)
-			RenderingServer.force_draw()
+				var sprite:Sprite2D = Sprite2D.new()
+				sprite.texture = ImageTexture.create_from_image(sheet.SpriteSheet.get_image())
+				sprite.offset = Vector2(size.x/2, size.y/2)
+				viewport.add_child(sprite)
+			add_child(viewport)
+			viewport.render_target_update_mode = SubViewport.UPDATE_ONCE 
 			await RenderingServer.frame_post_draw
-			var texture_RID = RenderingServer.viewport_get_texture(viewport_RID)
-			var mergeImg:Image = RenderingServer.texture_2d_get(texture_RID)
-			mergeImg.save_png("res://temp.png")
 			
-			### unmultiplication
-			#for y in mergeImg.get_size().y:
-			#	for x in mergeImg.get_size().x:
-			#		var color:Color = mergeImg.get_pixel(x, y)
-			#		if color.a != 0:
-			#			mergeImg.set_pixel(x, y, Color(color.r / color.a, color.g / color.a, color.b / color.a, color.a))
-			###
+			var flattened_texture: Texture2D = viewport.get_texture()
+			var flattened_image: Image = flattened_texture.get_image()
+			
+			var img_data: PackedByteArray = flattened_image.get_data()
+			var new_img: Image = Image.create_from_data(size.x, size.y, false, flattened_image.get_format(), img_data)
+			
+			for child in viewport.get_children():
+				child.queue_free()
+			viewport.queue_free()
+			
 			unified_sprite_sheet = LPCSpriteSheet.new()
-			unified_sprite_sheet.SpriteSheet = ImageTexture.create_from_image(mergeImg)
-			for a_RID in RID_array:
-				RenderingServer.free_rid(a_RID)
-			RenderingServer.free_rid(texture_RID)
-			RenderingServer.free_rid(canvas_RID)
-			RenderingServer.free_rid(viewport_RID)
+			unified_sprite_sheet.SpriteSheet = ImageTexture.create_from_image(new_img)
+			
 			LoadFrames()
 
 func LoadFrames() -> void:
