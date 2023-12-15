@@ -102,19 +102,8 @@ func LoadAnimations():
 			add_child(viewport)
 			viewport.render_target_update_mode = SubViewport.UPDATE_ONCE 
 			await RenderingServer.frame_post_draw
-			
-			var flattened_texture: Texture2D = viewport.get_texture()
-			var flattened_image: Image = flattened_texture.get_image()
-			
-			var img_data: PackedByteArray = flattened_image.get_data()
-			var new_img: Image = Image.create_from_data(size.x, size.y, false, flattened_image.get_format(), img_data)
-			
-			for child in viewport.get_children():
-				child.queue_free()
-			viewport.queue_free()
-			
 			unified_sprite_sheet = LPCSpriteSheet.new()
-			unified_sprite_sheet.SpriteSheet = ImageTexture.create_from_image(new_img)
+			unified_sprite_sheet.SpriteSheet = viewport.get_texture()
 			
 			LoadFrames()
 
