@@ -78,6 +78,7 @@ func Size() -> int:
 			return 64
 		_:
 			return 192
+			
 func AnimationData() -> Array[LPCAnimationData]:
 	match SpriteType:
 		SpriteTypeEnum.Normal:
