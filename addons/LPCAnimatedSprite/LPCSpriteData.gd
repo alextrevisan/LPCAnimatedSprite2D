@@ -5,9 +5,11 @@ var Name:String
 var Row:int
 var Col:int
 var Loop:bool
-func _init(frameCount:int, name:String, row:int, col:int, loop:bool):
+var Size:int
+func _init(frameCount:int, name:String, row:int, col:int, loop:bool, size:int = 64):
 		FrameCount = frameCount
 		Name = name
 		Row = row
 		Col = col
 		Loop = loop
+		Size = size
