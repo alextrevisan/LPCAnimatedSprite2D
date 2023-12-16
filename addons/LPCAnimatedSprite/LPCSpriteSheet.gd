@@ -15,7 +15,7 @@ enum SpriteTypeEnum {
 	OversizeWhip
 }
 
-var NormalAnimationData:Array[LPCAnimationData] = [
+static var NormalAnimationData:Array[LPCAnimationData] = [
 	LPCAnimationData.new(7,"CAST_UP",0, 0,false),
 	LPCAnimationData.new(7,"CAST_LEFT",1, 0,false),
 	LPCAnimationData.new(7,"CAST_DOWN",2, 0,false),
@@ -47,33 +47,33 @@ var NormalAnimationData:Array[LPCAnimationData] = [
 	LPCAnimationData.new(1,"IDLE_RIGHT",11, 0,false),
 	LPCAnimationData.new(1,"HURT_DOWN_LAST",20, 5,false),
 ]
-var SlashAnimationData:Array[LPCAnimationData] = [
+static var SlashAnimationData:Array[LPCAnimationData] = [
 	LPCAnimationData.new(6,"SLASH_UP",0, 0,false),
 	LPCAnimationData.new(6,"SLASH_LEFT",1, 0,false),
 	LPCAnimationData.new(6,"SLASH_DOWN",2, 0,false),
 	LPCAnimationData.new(6,"SLASH_RIGHT",3, 0,false),
 ]
 
-var PreSlash:Array[LPCAnimationData] = [
+static var PreSlash:Array[LPCAnimationData] = [
 	LPCAnimationData.new(6,"SLASH_UP",21, 0,false, 192),
 	LPCAnimationData.new(6,"SLASH_LEFT",22, 0,false, 192),
 	LPCAnimationData.new(6,"SLASH_DOWN",23, 0,false, 192),
 	LPCAnimationData.new(6,"SLASH_RIGHT",24, 0,false, 192),
 ]
 
-var ThrustAnimationData:Array[LPCAnimationData] = [
+static var ThrustAnimationData:Array[LPCAnimationData] = [
 	LPCAnimationData.new(6,"THRUST_UP",0, 0,false),
 	LPCAnimationData.new(6,"THRUST_LEFT",1, 0,false),
 	LPCAnimationData.new(6,"THRUST_DOWN",2, 0,false),
 	LPCAnimationData.new(6,"THRUST_RIGHT",3, 0,false),
 ]
-var RodAnimationData:Array[LPCAnimationData] = [
+static var RodAnimationData:Array[LPCAnimationData] = [
 	LPCAnimationData.new(6,"ROD_UP",0, 0,false),
 	LPCAnimationData.new(6,"ROD_LEFT",1, 0,false),
 	LPCAnimationData.new(6,"ROD_DOWN",2, 0,false),
 	LPCAnimationData.new(6,"ROD_RIGHT",3, 0,false),
 ]
-var WhipAnimationData:Array[LPCAnimationData] = [
+static var WhipAnimationData:Array[LPCAnimationData] = [
 	LPCAnimationData.new(8,"WHIP_UP",0, 0,false),
 	LPCAnimationData.new(8,"WHIP_LEFT",1, 0,false),
 	LPCAnimationData.new(8,"WHIP_DOWN",2, 0,false),
