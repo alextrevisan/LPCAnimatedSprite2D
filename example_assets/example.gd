@@ -1,13 +1,28 @@
 extends Node2D
 
-@onready var SpriteParts:LPCAnimatedSprite2D = $"sprite parts"
-@onready var Precompiled:LPCAnimatedSprite2D = $precompiled
+#precompile spritesheet definition
+#https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/#?body=Body_color_light&head=Human_male_light&weapon=Dagger_dagger&sex=male&shadow=Shadow_shadow&wound_arm=none&prosthesis_hand=none&shoulders=Plate_steel&arms=Armour_steel&bauldron=Bauldron_tan&bracers=Bracers_steel&wrists=none&gloves=none&armour=Plate_steel&cape=Tattered_purple&belt=Leather_Belt_brown&legs=Armour_steel&shoes=Armour_steel&eyepatch=Eyepatch_eyepatch&hair=Plain_ash
 
-func _on_sprite_type_item_selected(index):
+@onready var SpriteParts:LPCAnimatedSprite2D = $"sprite parts"
+@onready var PrecompiledDagger:LPCAnimatedSprite2D = $"precompiled_dagger"
+@onready var AnimationList:OptionButton = $CanvasLayer/Control/VBoxContainer/Animation
+
+func _ready() -> void:
+	for value:String in LPCAnimatedSprite2D.LPCAnimation:
+		AnimationList.add_item(value)
+	AnimationList.select(LPCAnimatedSprite2D.LPCAnimation.WALK_DOWN)
+
+func _on_sprite_type_item_selected(index:int) -> void:
 	match index:
 		0:
 			SpriteParts.visible = true
-			Precompiled.visible = false
+			PrecompiledDagger.visible = false
 		1:
 			SpriteParts.visible = false
-			Precompiled.visible = true
+			PrecompiledDagger.visible = true
+
+
+func _on_animation_item_selected(index:int) -> void:
+	var animation:LPCAnimatedSprite2D.LPCAnimation = index as LPCAnimatedSprite2D.LPCAnimation
+	PrecompiledDagger.play(animation)
+	SpriteParts.play(animation)
