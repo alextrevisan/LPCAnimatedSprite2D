@@ -75,39 +75,9 @@ func LoadAnimations():
 	var children = get_children();
 	for child in children:
 		remove_child(child)
-		
-	if 0 == SpriteSheets.size():
-		push_error("No detected LPCSpriteSheets.")
-	else:
-		if SpriteSheets[0] == null:
-			push_warning("There are LPCSpriteSheets that are <empty> in the LPCAnimatedSprite2D panel")
-			return
-		if 1 == SpriteSheets.size():
-			unified_sprite_sheet = SpriteSheets[0]
-			LoadFrames()
-		else:
-			# assuming all spritesheet textures of same dimensions as those of the first.
-			# May be an invalid assumption, as I have no data and can't test - so TBC.
-			var size: Vector2 = SpriteSheets[0].SpriteSheet.get_size()
-			var viewport = SubViewport.new()
-			viewport.disable_3d = true
-			viewport.size = size
-			viewport.transparent_bg = true
-			
-			for sheet in SpriteSheets:
-				var sprite:Sprite2D = Sprite2D.new()
-				sprite.texture = ImageTexture.create_from_image(sheet.SpriteSheet.get_image())
-				sprite.offset = Vector2(size.x/2, size.y/2)
-				viewport.add_child(sprite)
-			add_child(viewport)
-			viewport.render_target_update_mode = SubViewport.UPDATE_ONCE 
-			await RenderingServer.frame_post_draw
-			unified_sprite_sheet = LPCSpriteSheet.new()
-			unified_sprite_sheet.SpriteSheet = viewport.get_texture()
-			
-			LoadFrames()
-
-func LoadFrames() -> void:
+	if not await GenerateSpriteSheet():
+		push_error("!")
+		return
 	animatedSprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	sprite_frames.remove_animation("default")
 	for animationData in AnimationData():
@@ -117,6 +87,43 @@ func LoadFrames() -> void:
 	animatedSprite.owner = get_tree().edited_scene_root
 	
 	play(DefaultAnimation)
+
+func GenerateSpriteSheet() -> bool:
+	if 0 == SpriteSheets.size():
+		push_error("No detected LPCSpriteSheets.")
+		return false
+	if SpriteSheets[0] == null:
+		push_warning("There are LPCSpriteSheets that are <empty> in the LPCAnimatedSprite2D panel")
+		return false
+	if 1 == SpriteSheets.size():
+		unified_sprite_sheet = SpriteSheets[0]
+		return true
+		
+	var size := Vector2(1536, 2880)
+	var viewport = SubViewport.new()
+	viewport.disable_3d = true
+	viewport.size = size
+	viewport.transparent_bg = true
+	
+	for sheet in SpriteSheets:
+		if sheet.SpriteSheet == null:
+			continue
+		var sprite:Sprite2D = Sprite2D.new()
+		sprite.texture = ImageTexture.create_from_image(sheet.SpriteSheet.get_image())
+		sprite.offset = Vector2(sprite.texture.get_size().x/2, sprite.texture.get_size().y/2)
+		viewport.add_child(sprite)
+		
+	add_child(viewport)
+	viewport.render_target_update_mode = SubViewport.UPDATE_ONCE 
+	await RenderingServer.frame_post_draw
+	unified_sprite_sheet = LPCSpriteSheet.new()
+	var texture := viewport.get_texture()
+	
+	unified_sprite_sheet.SpriteSheet = texture
+	
+	texture.get_image().save_png("res://output-sample.png")
+
+	return true
 
 func AddAnimation(animationData:LPCAnimationData):
 	if unified_sprite_sheet == null || unified_sprite_sheet.SpriteSheet == null:
