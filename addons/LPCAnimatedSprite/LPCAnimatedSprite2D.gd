@@ -23,6 +23,10 @@ enum LPCAnimation {
 	SLASH_LEFT,
 	SLASH_DOWN,
 	SLASH_RIGHT,
+	SLASH_REVERSE_UP,
+	SLASH_REVERSE_LEFT,
+	SLASH_REVERSE_DOWN,
+	SLASH_REVERSE_RIGHT,
 	SHOOT_UP,
 	SHOOT_LEFT,
 	SHOOT_DOWN,
@@ -95,10 +99,13 @@ func AddAnimation(spriteSheet:LPCSpriteSheet, spriteFrames:SpriteFrames, animati
 		spriteFrames.remove_animation(animationData.Name)
 		
 	spriteFrames.add_animation(animationData.Name)
-	for frame in range(animationData.FrameCount):
+	var frameStart = animationData.FrameCount -1 if animationData.Reverse else animationData.Col
+	var frameEnd = animationData.Col -1 if animationData.Reverse else animationData.FrameCount
+	var reversed = -1 if animationData.Reverse else 1
+	for frame in range(frameStart, frameEnd , reversed):
 		var atlasTexture = AtlasTexture.new()
 		atlasTexture.atlas = spriteSheet.SpriteSheet
 		atlasTexture.region = spriteSheet.GetSpriteRect(animationData, frame)
-		spriteFrames.add_frame(animationData.Name, atlasTexture, 0.5)
+		spriteFrames.add_frame(animationData.Name, atlasTexture, 3)
 	spriteFrames.set_animation_loop(animationData.Name, animationData.Loop)
 	return spriteFrames

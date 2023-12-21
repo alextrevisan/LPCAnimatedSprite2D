@@ -12,6 +12,7 @@ enum SpriteTypeEnum {
 	OversizeRod,
 	OversizeThrust,
 	OversizeSlash,
+	OversizeSlashReverse,
 	OversizeWhip
 }
 
@@ -32,6 +33,10 @@ static var NormalAnimationData:Array[LPCAnimationData] = [
 	LPCAnimationData.new(6,"SLASH_LEFT",13, 0,false),
 	LPCAnimationData.new(6,"SLASH_DOWN",14, 0,false),
 	LPCAnimationData.new(6,"SLASH_RIGHT",15, 0,false),
+	LPCAnimationData.new(6,"SLASH_REVERSE_UP", 12, 0,false, 64, true),
+	LPCAnimationData.new(6,"SLASH_REVERSE_LEFT", 13, 0,false, 64, true),
+	LPCAnimationData.new(6,"SLASH_REVERSE_DOWN", 14, 0,false, 64, true),
+	LPCAnimationData.new(6,"SLASH_REVERSE_RIGHT", 15, 0,false, 64, true),
 	LPCAnimationData.new(6,"WHIP_UP",12, 0,false),
 	LPCAnimationData.new(6,"WHIP_LEFT",13, 0,false),
 	LPCAnimationData.new(6,"WHIP_DOWN",14, 0,false),
@@ -47,11 +52,19 @@ static var NormalAnimationData:Array[LPCAnimationData] = [
 	LPCAnimationData.new(1,"IDLE_RIGHT",11, 0,false),
 	LPCAnimationData.new(1,"HURT_DOWN_LAST",20, 5,false),
 ]
+
 static var SlashAnimationData:Array[LPCAnimationData] = [
-	LPCAnimationData.new(6,"SLASH_UP",0, 0,false),
-	LPCAnimationData.new(6,"SLASH_LEFT",1, 0,false),
-	LPCAnimationData.new(6,"SLASH_DOWN",2, 0,false),
-	LPCAnimationData.new(6,"SLASH_RIGHT",3, 0,false),
+	LPCAnimationData.new(6,"SLASH_UP",0, 0,false, 192),
+	LPCAnimationData.new(6,"SLASH_LEFT",1, 0,false, 192),
+	LPCAnimationData.new(6,"SLASH_DOWN",2, 0,false, 192),
+	LPCAnimationData.new(6,"SLASH_RIGHT",3, 0,false, 192),
+]
+
+static var SlashReverseAnimationData:Array[LPCAnimationData] = [
+	LPCAnimationData.new(6,"SLASH_REVERSE_UP",0, 0,false, 192),
+	LPCAnimationData.new(6,"SLASH_REVERSE_LEFT",1, 0,false, 192),
+	LPCAnimationData.new(6,"SLASH_REVERSE_DOWN",2, 0,false, 192),
+	LPCAnimationData.new(6,"SLASH_REVERSE_RIGHT",3, 0,false, 192),
 ]
 
 static var PreSlash:Array[LPCAnimationData] = [
@@ -125,6 +138,8 @@ func AnimationData() -> Array[LPCAnimationData]:
 			return ThrustAnimationData
 		SpriteTypeEnum.OversizeSlash:
 			return SlashAnimationData
+		SpriteTypeEnum.OversizeSlashReverse:
+			return SlashReverseAnimationData
 		SpriteTypeEnum.OversizeWhip:
 			return WhipAnimationData
 		_:

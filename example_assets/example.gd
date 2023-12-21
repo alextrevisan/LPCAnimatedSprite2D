@@ -6,6 +6,7 @@ extends Node2D
 @onready var SpriteParts:LPCAnimatedSprite2D = $"CanvasLayer/GridContainer/Control/SpriteParts"
 @onready var PrecompiledDagger:LPCAnimatedSprite2D = $CanvasLayer/GridContainer/Control2/PrecompiledDagger
 @onready var PrecompiledLongsword:LPCAnimatedSprite2D = $CanvasLayer/GridContainer/Control3/PrecompiledLongsword
+@onready var SpritePartsLongsword: LPCAnimatedSprite2D = $CanvasLayer/GridContainer/Control6/SpritePartsLongsword
 
 @onready var AnimationList:OptionButton = $CanvasLayer/Control/VBoxContainer/Animation
 
@@ -19,3 +20,4 @@ func _on_animation_item_selected(index:int) -> void:
 	PrecompiledDagger.play(animation)
 	SpriteParts.play(animation)
 	PrecompiledLongsword.play(animation)
+	SpritePartsLongsword.play(animation)
