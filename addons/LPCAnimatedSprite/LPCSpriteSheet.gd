@@ -67,18 +67,25 @@ static var SlashReverseAnimationData:Array[LPCAnimationData] = [
 	LPCAnimationData.new(6,"SLASH_REVERSE_RIGHT",3, 0,false, 192),
 ]
 
-static var PrecompiledSlash:Array[LPCAnimationData] = [
+static var PrecompiledOversizedSlash:Array[LPCAnimationData] = [
 	LPCAnimationData.new(6,"SLASH_UP",21, 0,false, 192),
 	LPCAnimationData.new(6,"SLASH_LEFT",22, 0,false, 192),
 	LPCAnimationData.new(6,"SLASH_DOWN",23, 0,false, 192),
 	LPCAnimationData.new(6,"SLASH_RIGHT",24, 0,false, 192),
 ]
 
-static var PrecompiledSlashReverse:Array[LPCAnimationData] = [
+static var PrecompiledOversizedSlashReverse:Array[LPCAnimationData] = [
 	LPCAnimationData.new(6,"SLASH_REVERSE_UP",25, 0,false, 192),
 	LPCAnimationData.new(6,"SLASH_REVERSE_LEFT",26, 0,false, 192),
 	LPCAnimationData.new(6,"SLASH_REVERSE_DOWN",27, 0,false, 192),
 	LPCAnimationData.new(6,"SLASH_REVERSE_RIGHT",28, 0,false, 192),
+]
+
+static var PrecompiledOversizedThrust:Array[LPCAnimationData] = [
+	LPCAnimationData.new(6,"THRUST_UP",29, 0,false, 192),
+	LPCAnimationData.new(6,"THRUST_LEFT",30, 0,false, 192),
+	LPCAnimationData.new(6,"THRUST_DOWN",31, 0,false, 192),
+	LPCAnimationData.new(6,"THRUST_RIGHT",32, 0,false, 192),
 ]
 
 static var ThrustAnimationData:Array[LPCAnimationData] = [
@@ -135,8 +142,9 @@ func AnimationData() -> Array[LPCAnimationData]:
 				SpritesheetType.Size_6_6_8:
 					var animationData:Array[LPCAnimationData] = []
 					animationData.append_array(NormalAnimationData)
-					animationData.append_array(PrecompiledSlash)
-					animationData.append_array(PrecompiledSlashReverse)
+					animationData.append_array(PrecompiledOversizedSlash)
+					animationData.append_array(PrecompiledOversizedSlashReverse)
+					animationData.append_array(PrecompiledOversizedThrust)
 					return animationData
 				_:
 					return NormalAnimationData
