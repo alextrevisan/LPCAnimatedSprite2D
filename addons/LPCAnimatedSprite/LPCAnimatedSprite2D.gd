@@ -106,6 +106,6 @@ func AddAnimation(spriteSheet:LPCSpriteSheet, spriteFrames:SpriteFrames, animati
 		var atlasTexture = AtlasTexture.new()
 		atlasTexture.atlas = spriteSheet.SpriteSheet
 		atlasTexture.region = spriteSheet.GetSpriteRect(animationData, frame)
-		spriteFrames.add_frame(animationData.Name, atlasTexture, 3)
+		spriteFrames.add_frame(animationData.Name, atlasTexture, 0.5)
 	spriteFrames.set_animation_loop(animationData.Name, animationData.Loop)
 	return spriteFrames
