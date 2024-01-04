@@ -1,4 +1,4 @@
-# LPCAnimatedSprite2D
+# LPCAnimatedSprite2D [![Discord](https://img.shields.io/discord/717501929642655804?label=Discord)](https://discord.gg/9s4STu4QEH)
 With this addon you simply add a LPC spritesheet to a character and it automaticly generates the animations for the Godot4 sprites
 
 
@@ -42,6 +42,11 @@ extends Node2D
 func _ready():
 	player.play(LPCAnimatedSprite2D.LPCAnimation.WALK_UP)
 ```
+
+## Support for Oversized Weapons
+Just select the appropriate Sprite Type
+
+If using component sprites rather than a a pre-built spritesheet, pay attention to the order in which they are configured as it will influence visibility.
 
 ## Version number
 
