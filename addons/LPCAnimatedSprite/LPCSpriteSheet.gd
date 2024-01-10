@@ -67,25 +67,59 @@ static var SlashReverseAnimationData:Array[LPCAnimationData] = [
 	LPCAnimationData.new(6,"SLASH_REVERSE_RIGHT",3, 0,false, 192),
 ]
 
+static var PrecompiledOversizedShoot:Array[LPCAnimationData] = [
+	LPCAnimationData.new(13,"SHOOT_UP",21, 0,false, 128),
+	LPCAnimationData.new(13,"SHOOT_LEFT",22, 0,false, 128),
+	LPCAnimationData.new(13,"SHOOT_DOWN",23, 0,false, 128),
+	LPCAnimationData.new(13,"SHOOT_RIGHT",24, 0,false, 128),
+]
+
+static var PrecompiledOversizedWalkSlash:Array[LPCAnimationData] = [
+	LPCAnimationData.new(1,"IDLE_UP",21, 0, false, 128),
+	LPCAnimationData.new(1,"IDLE_LEFT",22, 0, false, 128),
+	LPCAnimationData.new(1,"IDLE_DOWN",23, 0, false, 128),
+	LPCAnimationData.new(1,"IDLE_RIGHT",24, 0, false, 128),
+	LPCAnimationData.new(8,"WALK_UP",21, 1, true, 128),
+	LPCAnimationData.new(8,"WALK_LEFT",22, 1,true, 128),
+	LPCAnimationData.new(8,"WALK_DOWN",23, 1, true, 128),
+	LPCAnimationData.new(8,"WALK_RIGHT",24, 1, true, 128),
+	LPCAnimationData.new(6,"SLASH_UP",25, 0, false, 128),
+	LPCAnimationData.new(6,"SLASH_LEFT",26, 0, false, 128),
+	LPCAnimationData.new(6,"SLASH_DOWN",27, 0, false, 128),
+	LPCAnimationData.new(6,"SLASH_RIGHT",28, 0, false, 128),
+]
+
 static var PrecompiledOversizedSlash:Array[LPCAnimationData] = [
+	LPCAnimationData.new(6,"SLASH_UP",21, 0, false, 192),
+	LPCAnimationData.new(6,"SLASH_LEFT",22, 0, false, 192),
+	LPCAnimationData.new(6,"SLASH_DOWN",23, 0, false, 192),
+	LPCAnimationData.new(6,"SLASH_RIGHT",24, 0, false, 192),
+]
+
+static var PrecompiledOversizedWhipOrThrust:Array[LPCAnimationData] = [
+	LPCAnimationData.new(8,"WHIP_UP",21, 0, false, 192),
+	LPCAnimationData.new(8,"WHIP_LEFT",22, 0, false, 192),
+	LPCAnimationData.new(8,"WHIP_DOWN",23, 0, false, 192),
+	LPCAnimationData.new(8,"WHIP_RIGHT",24, 0, false, 192),
+	LPCAnimationData.new(8,"THRUST_UP",21, 0, false, 192),
+	LPCAnimationData.new(8,"THRUST_LEFT",22, 0, false, 192),
+	LPCAnimationData.new(8,"THRUST_DOWN",23, 0, false, 192),
+	LPCAnimationData.new(8,"THRUST_RIGHT",24, 0, false, 192),
+]
+
+static var PrecompiledOversizedSlashSlashreverseThrust:Array[LPCAnimationData] = [
 	LPCAnimationData.new(6,"SLASH_UP",21, 0,false, 192),
 	LPCAnimationData.new(6,"SLASH_LEFT",22, 0,false, 192),
 	LPCAnimationData.new(6,"SLASH_DOWN",23, 0,false, 192),
 	LPCAnimationData.new(6,"SLASH_RIGHT",24, 0,false, 192),
-]
-
-static var PrecompiledOversizedSlashReverse:Array[LPCAnimationData] = [
 	LPCAnimationData.new(6,"SLASH_REVERSE_UP",25, 0,false, 192),
 	LPCAnimationData.new(6,"SLASH_REVERSE_LEFT",26, 0,false, 192),
 	LPCAnimationData.new(6,"SLASH_REVERSE_DOWN",27, 0,false, 192),
 	LPCAnimationData.new(6,"SLASH_REVERSE_RIGHT",28, 0,false, 192),
-]
-
-static var PrecompiledOversizedThrust:Array[LPCAnimationData] = [
-	LPCAnimationData.new(6,"THRUST_UP",29, 0,false, 192),
-	LPCAnimationData.new(6,"THRUST_LEFT",30, 0,false, 192),
-	LPCAnimationData.new(6,"THRUST_DOWN",31, 0,false, 192),
-	LPCAnimationData.new(6,"THRUST_RIGHT",32, 0,false, 192),
+	LPCAnimationData.new(8,"THRUST_UP",29, 0,false, 192),
+	LPCAnimationData.new(8,"THRUST_LEFT",30, 0,false, 192),
+	LPCAnimationData.new(8,"THRUST_DOWN",31, 0,false, 192),
+	LPCAnimationData.new(8,"THRUST_RIGHT",32, 0,false, 192),
 ]
 
 static var ThrustAnimationData:Array[LPCAnimationData] = [
@@ -109,20 +143,40 @@ static var WhipAnimationData:Array[LPCAnimationData] = [
 
 enum SpritesheetType
 {
-	SizeNormal,
-	Size_6_6_8
+	NormalSize,
+	OverSizeShoot,
+	OverSizeWalkSlash,
+	OverSizeSlash,
+	OversizeWhipOrThrust,
+	OverSizeThrustSlash,
+	OverSizeSlashSlashreverseThrust
 }
 
 func GetSpritesheetType():
-	if SpriteSheet.get_height() == 3648:
-		return SpritesheetType.Size_6_6_8
-	return SpritesheetType.SizeNormal
+	match SpriteSheet.get_height():
+		1344:
+			return SpritesheetType.NormalSize
+		1856: #great bow
+			return SpritesheetType.OverSizeShoot
+		2112: 
+			if SpriteSheet.get_width() == 1152: #scythe/club/rapier
+				return SpritesheetType.OverSizeSlash
+			else: #could be whips OR staff/trident/etc.
+				return SpritesheetType.OversizeWhipOrThrust
+		2368: #longsword alt
+			return SpritesheetType.OverSizeWalkSlash
+		2880: #halberd
+			return SpritesheetType.OverSizeThrustSlash
+		3648:
+			return SpritesheetType.OverSizeSlashSlashreverseThrust
+		_:
+			return SpritesheetType.NormalSize
 	
 func GetSpriteRect(animationData:LPCAnimationData, frame: int) -> Rect2:
 	const startOfOversizedAnimation = 21;
 	var spriteSize:int = animationData.Size
 	match GetSpritesheetType():
-		LPCSpriteSheet.SpritesheetType.SizeNormal:
+		LPCSpriteSheet.SpritesheetType.NormalSize:
 			return Rect2(spriteSize*(frame+animationData.Col), spriteSize*animationData.Row, spriteSize, spriteSize)
 		LPCSpriteSheet.SpritesheetType.Size_6_6_8:
 			if animationData.Row < startOfOversizedAnimation:
@@ -136,18 +190,26 @@ func GetSpriteRect(animationData:LPCAnimationData, frame: int) -> Rect2:
 func AnimationData() -> Array[LPCAnimationData]:
 	match SpriteType:
 		SpriteTypeEnum.Normal:
+			if GetSpritesheetType() == SpritesheetType.NormalSize:
+				return NormalAnimationData
+			var animationData:Array[LPCAnimationData] = []
+			animationData.append_array(NormalAnimationData)
 			match GetSpritesheetType():
-				SpritesheetType.SizeNormal:
-					return NormalAnimationData
-				SpritesheetType.Size_6_6_8:
-					var animationData:Array[LPCAnimationData] = []
-					animationData.append_array(NormalAnimationData)
+				SpritesheetType.OverSizeShoot:
+					animationData.append_array(PrecompiledOversizeShoot)
+				SpritesheetType.OverSizeWalkSlash:
+					animationData.append_array(PrecompiledOversizeShoot)
+				SpritesheetType.OverSizeSlash:
+					animationData.append_array(PrecompiledOversizeShoot)
+				SpritesheetType.OversizeWhipOrThrust:
+					animationData.append_array(PrecompiledOversizeShoot)
+				SpritesheetType.OverSizeThrustSlash:
+					animationData.append_array(PrecompiledOversizeShoot)
+				SpritesheetType.OverSizeSlashSlashreverseThrust:
 					animationData.append_array(PrecompiledOversizedSlash)
 					animationData.append_array(PrecompiledOversizedSlashReverse)
 					animationData.append_array(PrecompiledOversizedThrust)
-					return animationData
-				_:
-					return NormalAnimationData
+			return animationData
 		SpriteTypeEnum.OversizeRod:
 			return RodAnimationData
 		SpriteTypeEnum.OversizeThrust:
