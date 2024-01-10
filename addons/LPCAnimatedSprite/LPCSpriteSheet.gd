@@ -96,6 +96,7 @@ static var PrecompiledOversizedSlash:Array[LPCAnimationData] = [
 	LPCAnimationData.new(6,"SLASH_RIGHT",24, 0, false, 192),
 ]
 
+# could be either whip or thrust, but replace both - unlikely to be harmful
 static var PrecompiledOversizedWhipOrThrust:Array[LPCAnimationData] = [
 	LPCAnimationData.new(8,"WHIP_UP",21, 0, false, 192),
 	LPCAnimationData.new(8,"WHIP_LEFT",22, 0, false, 192),
@@ -105,6 +106,17 @@ static var PrecompiledOversizedWhipOrThrust:Array[LPCAnimationData] = [
 	LPCAnimationData.new(8,"THRUST_LEFT",22, 0, false, 192),
 	LPCAnimationData.new(8,"THRUST_DOWN",23, 0, false, 192),
 	LPCAnimationData.new(8,"THRUST_RIGHT",24, 0, false, 192),
+]
+
+static var PrecompiledOversizedThrustSlash:Array[LPCAnimationData] = [
+	LPCAnimationData.new(8,"THRUST_UP",21, 0, false, 192),
+	LPCAnimationData.new(8,"THRUST_LEFT",22, 0, false, 192),
+	LPCAnimationData.new(8,"THRUST_DOWN",23, 0, false, 192),
+	LPCAnimationData.new(8,"THRUST_RIGHT",24, 0, false, 192),
+	LPCAnimationData.new(6,"SLASH_UP",25, 0, false, 192),
+	LPCAnimationData.new(6,"SLASH_LEFT",26, 0, false, 192),
+	LPCAnimationData.new(6,"SLASH_DOWN",27, 0, false, 192),
+	LPCAnimationData.new(6,"SLASH_RIGHT",28, 0, false, 192),
 ]
 
 static var PrecompiledOversizedSlashSlashreverseThrust:Array[LPCAnimationData] = [
@@ -154,7 +166,7 @@ enum SpritesheetType
 
 func GetSpritesheetType():
 	match SpriteSheet.get_height():
-		1344:
+		1344: #normal no oversized
 			return SpritesheetType.NormalSize
 		1856: #great bow
 			return SpritesheetType.OverSizeShoot
@@ -167,7 +179,7 @@ func GetSpritesheetType():
 			return SpritesheetType.OverSizeWalkSlash
 		2880: #halberd
 			return SpritesheetType.OverSizeThrustSlash
-		3648:
+		3648: #longsword
 			return SpritesheetType.OverSizeSlashSlashreverseThrust
 		_:
 			return SpritesheetType.NormalSize
@@ -178,7 +190,7 @@ func GetSpriteRect(animationData:LPCAnimationData, frame: int) -> Rect2:
 	match GetSpritesheetType():
 		LPCSpriteSheet.SpritesheetType.NormalSize:
 			return Rect2(spriteSize*(frame+animationData.Col), spriteSize*animationData.Row, spriteSize, spriteSize)
-		LPCSpriteSheet.SpritesheetType.Size_6_6_8:
+		LPCSpriteSheet.SpritesheetType.OverSizeSlashSlashreverseThrust:
 			if animationData.Row < startOfOversizedAnimation:
 				return Rect2(spriteSize*(frame+animationData.Col), spriteSize*animationData.Row, spriteSize, spriteSize)
 			else:
@@ -196,19 +208,17 @@ func AnimationData() -> Array[LPCAnimationData]:
 			animationData.append_array(NormalAnimationData)
 			match GetSpritesheetType():
 				SpritesheetType.OverSizeShoot:
-					animationData.append_array(PrecompiledOversizeShoot)
+					animationData.append_array(PrecompiledOversizedShoot)
 				SpritesheetType.OverSizeWalkSlash:
-					animationData.append_array(PrecompiledOversizeShoot)
+					animationData.append_array(PrecompiledOversizedWalkSlash)
 				SpritesheetType.OverSizeSlash:
-					animationData.append_array(PrecompiledOversizeShoot)
-				SpritesheetType.OversizeWhipOrThrust:
-					animationData.append_array(PrecompiledOversizeShoot)
-				SpritesheetType.OverSizeThrustSlash:
-					animationData.append_array(PrecompiledOversizeShoot)
-				SpritesheetType.OverSizeSlashSlashreverseThrust:
 					animationData.append_array(PrecompiledOversizedSlash)
-					animationData.append_array(PrecompiledOversizedSlashReverse)
-					animationData.append_array(PrecompiledOversizedThrust)
+				SpritesheetType.OversizeWhipOrThrust:
+					animationData.append_array(PrecompiledOversizedWhipOrThrust)
+				SpritesheetType.OverSizeThrustSlash:
+					animationData.append_array(PrecompiledOversizedThrustSlash)
+				SpritesheetType.OverSizeSlashSlashreverseThrust:
+					animationData.append_array(PrecompiledOversizedSlashSlashreverseThrust)
 			return animationData
 		SpriteTypeEnum.OversizeRod:
 			return RodAnimationData
