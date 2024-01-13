@@ -23,6 +23,10 @@ enum LPCAnimation {
 	SLASH_LEFT,
 	SLASH_DOWN,
 	SLASH_RIGHT,
+	SLASH_REVERSE_UP,
+	SLASH_REVERSE_LEFT,
+	SLASH_REVERSE_DOWN,
+	SLASH_REVERSE_RIGHT,
 	SHOOT_UP,
 	SHOOT_LEFT,
 	SHOOT_DOWN,
@@ -86,21 +90,22 @@ func CreateSprites(spriteSheet:LPCSpriteSheet):
 	for animationData in spriteSheet.AnimationData():
 		AddAnimation(spriteSheet, spriteFrames, animationData)
 	return spriteFrames
-	
+
 func AddAnimation(spriteSheet:LPCSpriteSheet, spriteFrames:SpriteFrames, animationData:LPCAnimationData):
 	if spriteSheet == null || spriteSheet.SpriteSheet == null:
 		return
-	if spriteFrames.has_animation(animationData.Name):
-		spriteFrames.clear(animationData.Name)
 	
+	if spriteFrames.has_animation(animationData.Name):
+		spriteFrames.remove_animation(animationData.Name)
+		
 	spriteFrames.add_animation(animationData.Name)
-	for col in range(animationData.FrameCount):
-		if "WALK" in animationData.Name && col == 0:
-			continue
+	var frameStart = animationData.FrameCount -1 if animationData.Reverse else animationData.Col
+	var frameEnd = animationData.Col -1 if animationData.Reverse else animationData.FrameCount
+	var reversed = -1 if animationData.Reverse else 1
+	for frame in range(frameStart, frameEnd , reversed):
 		var atlasTexture = AtlasTexture.new()
 		atlasTexture.atlas = spriteSheet.SpriteSheet
-		var spriteSize:int = spriteSheet.Size()
-		atlasTexture.region = Rect2(spriteSize*(col+animationData.Col), spriteSize*animationData.Row, spriteSize, spriteSize)			
+		atlasTexture.region = spriteSheet.GetSpriteRect(animationData, frame)
 		spriteFrames.add_frame(animationData.Name, atlasTexture, 0.5)
 	spriteFrames.set_animation_loop(animationData.Name, animationData.Loop)
 	return spriteFrames
