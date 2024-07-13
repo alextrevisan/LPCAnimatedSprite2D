@@ -99,7 +99,7 @@ func AddAnimation(spriteSheet:LPCSpriteSheet, spriteFrames:SpriteFrames, animati
 		spriteFrames.remove_animation(animationData.Name)
 		
 	spriteFrames.add_animation(animationData.Name)
-	var frameStart = animationData.FrameCount -1 if animationData.Reverse else animationData.Col
+	var frameStart = animationData.FrameCount -1 if animationData.Reverse else 0
 	var frameEnd = animationData.Col -1 if animationData.Reverse else animationData.FrameCount
 	var reversed = -1 if animationData.Reverse else 1
 	for frame in range(frameStart, frameEnd , reversed):
