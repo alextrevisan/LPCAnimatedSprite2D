@@ -11,12 +11,12 @@ extends Node2D
 @onready var AnimationList:OptionButton = $CanvasLayer/Control/VBoxContainer/Animation
 
 func _ready() -> void:
-	for value:String in LPCAnimatedSprite2D.LPCAnimation:
+	for value:String in LPCEnum.LPCAnimation:
 		AnimationList.add_item(value)
-	AnimationList.select(LPCAnimatedSprite2D.LPCAnimation.WALK_DOWN)
+	AnimationList.select(LPCEnum.LPCAnimation.WALK_DOWN)
 
 func _on_animation_item_selected(index:int) -> void:
-	var animation:LPCAnimatedSprite2D.LPCAnimation = index as LPCAnimatedSprite2D.LPCAnimation
+	var animation:LPCEnum.LPCAnimation = index as LPCEnum.LPCAnimation
 	PrecompiledDagger.play(animation)
 	SpriteParts.play(animation)
 	PrecompiledLongsword.play(animation)

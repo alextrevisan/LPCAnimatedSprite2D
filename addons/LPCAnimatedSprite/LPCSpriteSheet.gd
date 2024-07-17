@@ -5,16 +5,7 @@ class_name LPCSpriteSheet
 @export var SpriteSheet:Texture2D
 @export var Name:String = ""
 
-@export var SpriteType: SpriteTypeEnum
-
-enum SpriteTypeEnum {
-	Normal,
-	OversizeRod,
-	OversizeThrust,
-	OversizeSlash,
-	OversizeSlashReverse,
-	OversizeWhip
-}
+@export var SpriteType: LPCEnum.SpriteType
 
 static var NormalAnimationData:Array[LPCAnimationData] = [
 	LPCAnimationData.new(7,"CAST_UP",0, 0,false),
@@ -107,24 +98,18 @@ static var WhipAnimationData:Array[LPCAnimationData] = [
 	LPCAnimationData.new(8,"WHIP_RIGHT",3, 0,false),
 ]
 
-enum SpritesheetType
-{
-	SizeNormal,
-	Size_6_6_8
-}
-
 func GetSpritesheetType():
 	if SpriteSheet.get_height() == 3648:
-		return SpritesheetType.Size_6_6_8
-	return SpritesheetType.SizeNormal
+		return LPCEnum.SpritesheetType.Size_6_6_8
+	return LPCEnum.SpritesheetType.SizeNormal
 	
 func GetSpriteRect(animationData:LPCAnimationData, frame: int) -> Rect2:
 	const startOfOversizedAnimation = 21;
 	var spriteSize:int = animationData.Size
 	match GetSpritesheetType():
-		LPCSpriteSheet.SpritesheetType.SizeNormal:
+		LPCEnum.SpritesheetType.SizeNormal:
 			return Rect2(spriteSize*(frame+animationData.Col), spriteSize*animationData.Row, spriteSize, spriteSize)
-		LPCSpriteSheet.SpritesheetType.Size_6_6_8:
+		LPCEnum.SpritesheetType.Size_6_6_8:
 			if animationData.Row < startOfOversizedAnimation:
 				return Rect2(spriteSize*(frame+animationData.Col), spriteSize*animationData.Row, spriteSize, spriteSize)
 			else:
@@ -135,11 +120,11 @@ func GetSpriteRect(animationData:LPCAnimationData, frame: int) -> Rect2:
 	
 func AnimationData() -> Array[LPCAnimationData]:
 	match SpriteType:
-		SpriteTypeEnum.Normal:
+		LPCEnum.SpriteType.Normal:
 			match GetSpritesheetType():
-				SpritesheetType.SizeNormal:
+				LPCEnum.SpritesheetType.SizeNormal:
 					return NormalAnimationData
-				SpritesheetType.Size_6_6_8:
+				LPCEnum.SpritesheetType.Size_6_6_8:
 					var animationData:Array[LPCAnimationData] = []
 					animationData.append_array(NormalAnimationData)
 					animationData.append_array(PrecompiledOversizedSlash)
@@ -148,15 +133,15 @@ func AnimationData() -> Array[LPCAnimationData]:
 					return animationData
 				_:
 					return NormalAnimationData
-		SpriteTypeEnum.OversizeRod:
+		LPCEnum.SpriteType.OversizeRod:
 			return RodAnimationData
-		SpriteTypeEnum.OversizeThrust:
+		LPCEnum.SpriteType.OversizeThrust:
 			return ThrustAnimationData
-		SpriteTypeEnum.OversizeSlash:
+		LPCEnum.SpriteType.OversizeSlash:
 			return SlashAnimationData
-		SpriteTypeEnum.OversizeSlashReverse:
+		LPCEnum.SpriteType.OversizeSlashReverse:
 			return SlashReverseAnimationData
-		SpriteTypeEnum.OversizeWhip:
+		LPCEnum.SpriteType.OversizeWhip:
 			return WhipAnimationData
 		_:
 			return NormalAnimationData
