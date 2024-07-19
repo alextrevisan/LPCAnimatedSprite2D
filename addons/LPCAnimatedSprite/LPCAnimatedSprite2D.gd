@@ -52,8 +52,8 @@ func LoadAnimations():
 			push_warning("There are LPCSpriteSheets that are <empty> in the LPCAnimatedSprite2D panel")
 			continue
 			
-		var animatedSprite = CreateSpriteType()
-		var spriteFrames = CreateSprites(spriteSheet)
+		var animatedSprite = CreateAnimatedSprite()
+		var spriteFrames = CreateSpritesFrames(spriteSheet)
 		animatedSprite.frames = spriteFrames
 		add_child(animatedSprite)
 		if spriteSheet.Name == null || spriteSheet.Name == "":
@@ -62,7 +62,8 @@ func LoadAnimations():
 			animatedSprite.name = spriteSheet.Name
 		animatedSprite.owner = get_tree().edited_scene_root
 		play(DefaultAnimation)
-func CreateSpriteType():
+		
+func CreateAnimatedSprite():
 	match NodeType:
 		LPCEnum.ESpriteNodeType.Sprite_3D:
 			var animatedSprite = AnimatedSprite3D.new()
@@ -77,7 +78,7 @@ func CreateSpriteType():
 			animatedSprite.texture_filter = Sprite2DTextureFilter
 			return animatedSprite
 			
-func CreateSprites(spriteSheet:LPCSpriteSheet):
+func CreateSpritesFrames(spriteSheet:LPCSpriteSheet):
 	var spriteFrames = SpriteFrames.new()
 	spriteFrames.remove_animation("default")
 	
