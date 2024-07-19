@@ -13,4 +13,5 @@ export_presets.cfg
 # Mono-specific ignores
 .mono/
 data_*/
+example_assets/*.tmp
 mono_crash.*.json

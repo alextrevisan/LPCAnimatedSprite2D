@@ -4,47 +4,15 @@ extends Node2D
 class_name LPCAnimatedSprite2D
 
 @export var SpriteSheets:Array[LPCSpriteSheet]
-@export var DefaultAnimation:LPCAnimation = LPCAnimation.IDLE_DOWN
+@export var DefaultAnimation:LPCEnum.LPCAnimation = LPCEnum.LPCAnimation.IDLE_DOWN
 
-enum LPCAnimation {
-	CAST_UP,
-	CAST_LEFT,
-	CAST_DOWN,
-	CAST_RIGHT,
-	THRUST_UP,
-	THRUST_LEFT,
-	THRUST_DOWN,
-	THRUST_RIGHT,
-	WALK_UP,
-	WALK_LEFT,
-	WALK_DOWN,
-	WALK_RIGHT,
-	SLASH_UP,
-	SLASH_LEFT,
-	SLASH_DOWN,
-	SLASH_RIGHT,
-	SLASH_REVERSE_UP,
-	SLASH_REVERSE_LEFT,
-	SLASH_REVERSE_DOWN,
-	SLASH_REVERSE_RIGHT,
-	SHOOT_UP,
-	SHOOT_LEFT,
-	SHOOT_DOWN,
-	SHOOT_RIGHT,
-	HURT_DOWN,
-	IDLE_UP,
-	IDLE_LEFT,
-	IDLE_DOWN,
-	IDLE_RIGHT,
-	HURT_DOWN_LAST
-}
 var AnimationNames:Array
 func _ready():
 	if Engine.is_editor_hint() == false:
 		LoadAnimations()
-		
-func play(animation: LPCAnimation, fps: float = 5.0):
-	var sprites = get_children() as Array[AnimatedSprite2D]
+
+func play(animation: LPCEnum.LPCAnimation, fps: float = 5.0):
+	var sprites = get_children()
 	for sprite in sprites:
 		if sprite.sprite_frames.has_animation(AnimationNames[animation]):
 			sprite.visible = true
@@ -62,7 +30,7 @@ func _enter_tree():
 		LoadAnimations()
 	
 func LoadAnimations():
-	AnimationNames = LPCAnimation.keys()
+	AnimationNames = LPCEnum.LPCAnimation.keys()
 	var children = get_children();
 	for child in children:
 		remove_child(child)
