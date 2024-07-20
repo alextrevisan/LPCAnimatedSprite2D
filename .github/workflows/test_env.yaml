@@ -2,7 +2,7 @@ on:
   push:
     tags:
       - '*'
-      workflow_dispatch:
+  workflow_dispatch:
 jobs:
   github-example-tags:
     runs-on: ubuntu-latest
