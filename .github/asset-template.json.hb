@@ -3,7 +3,7 @@
   "description": "With this addon you simply add a LPC spritesheet to a character and it automaticly generates the animations for the Godot4 sprites",
   "category_id": "5",
   "godot_version": "4.2",
-  "version_string": "{{ grep $(make version) }}",
+  "version_string": "{{ context.release.name }}",
   "cost": "MIT",
   "support_level": "community",
   "download_provider": "GitHub",
