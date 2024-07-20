@@ -30,13 +30,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
-      - run: cd $GITHUB_WORKSPACE
+        with:
+          fetch-depth: 0  # Ensure all tags are fetched
+
+      - name: Fetch all tags
+        run: git fetch --tags
 
       - name: Get latest release tag
         id: get_latest_release
         run: |
-          LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+          LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
           echo "latest_tag=$LATEST_TAG" >> $GITHUB_ENV
 
       - name: Echo the latest release tag
