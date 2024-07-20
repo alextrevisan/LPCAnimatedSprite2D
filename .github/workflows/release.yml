@@ -30,6 +30,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
+      - run: cd $GITHUB_WORKSPACE
 
       - name: Get latest release tag
         id: get_latest_release
