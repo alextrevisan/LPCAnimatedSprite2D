@@ -3,7 +3,7 @@ name: test env
 on:
   push:
     tags:
-      - 'CP/v[0-9]+.[0-9]+.[0-9]+'
+      - '*'
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "release"
