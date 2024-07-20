@@ -25,11 +25,7 @@ jobs:
         run: git tag -l | grep v$(make version) || make publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: Push to Godot Asset Library
-        uses: wjt/godot-asset-lib-action@9cce3792b504bec69eb06b852b008d095e372f56
-        with:
-          username: ${{ secrets.GODOT_ASSET_LIBRARY_USERNAME }}
-          password: ${{ secrets.GODOT_ASSET_STORE_PASSWORD }}
-          assetId: 2212
-          assetTemplate: .github/asset-template.json.hb
+      - name: GitHub Tag Name example
+        run: |
+          echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
+          echo "Tag name from github.ref_name: ${{  github.ref_name }}"
