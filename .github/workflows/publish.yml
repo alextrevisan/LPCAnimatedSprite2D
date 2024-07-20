@@ -1,0 +1,13 @@
+name: After Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  after-release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: GitHub Tag Name example
+      run: |
+        echo "Name: ${{ github.event.release.name }}"
