@@ -29,7 +29,15 @@ jobs:
     needs: release
     runs-on: ubuntu-latest
     steps:
-      - name: GitHub Tag Name example
+      - uses: actions/checkout@v4
+
+      - name: Get latest release tag
+        id: get_latest_release
         run: |
-          echo "Name: ${{ github.event.base_ref }}"
+          LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+          echo "latest_tag=$LATEST_TAG" >> $GITHUB_ENV
+
+      - name: Echo the latest release tag
+        run: |
+          echo "Name: ${{ env.latest_tag }}"
       
