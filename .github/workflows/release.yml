@@ -29,3 +29,13 @@ jobs:
         run: |
           echo "Tag name from github.ref_name: ${{  github.ref_name }}"
           echo "Name: ${{ github.event.release.name }}"
+  publish:
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: GitHub Tag Name example
+        run: |
+          echo "Tag name from github.ref_name: ${{  github.ref_name }}"
+          echo "Name: ${{ github.event.release.name }}"
+      
