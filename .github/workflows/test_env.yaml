@@ -1,11 +1,17 @@
+name: test env
+
 on:
-    push:
-      tags:
-        - '*'
-  jobs:
-    github-example-tags:
-      steps:
-       - name: GitHub Tag Name example
-         run: |
-           echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
-           echo "Tag name from github.ref_name: ${{  github.ref_name }}"
+  push:
+    tags:
+      - 'CP/v[0-9]+.[0-9]+.[0-9]+'
+jobs:
+  github-example-tags:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Configure user
+        run: |
+          echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
+         echo "Tag name from github.ref_name: ${{  github.ref_name }}"
