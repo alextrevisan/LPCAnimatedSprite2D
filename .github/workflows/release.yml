@@ -46,7 +46,7 @@ jobs:
         run: |
           echo "Name: ${{ env.latest_tag }}"
       - name: Godot Asset Lib
-        uses: deep-entertainment/godot-asset-lib-action@v0.5.0
+        uses: wjt/godot-asset-lib-action@9cce3792b504bec69eb06b852b008d095e372f56
         with:
           username: ${{ secrets.GODOT_ASSET_LIBRARY_USERNAME }}
           password: ${{ secrets.GODOT_ASSET_STORE_PASSWORD }}
