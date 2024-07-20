@@ -2,9 +2,6 @@ on:
   release:
     types:
       - published
-  push:
-    branches: [ master ]
-  workflow_dispatch:
 
 name: Push to Godot Asset Library
 
