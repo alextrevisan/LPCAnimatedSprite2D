@@ -47,3 +47,8 @@ enum SpritesheetType
 	SizeNormal,
 	Size_6_6_8
 }
+
+enum ESpriteNodeType {
+	Sprite_2D,
+	Sprite_3D
+}
