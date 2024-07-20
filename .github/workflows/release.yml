@@ -45,4 +45,12 @@ jobs:
       - name: Echo the latest release tag
         run: |
           echo "Name: ${{ env.latest_tag }}"
+      - name: Godot Asset Lib
+        uses: deep-entertainment/godot-asset-lib-action@v0.5.0
+        with:
+          username: ${{ secrets.GODOT_ASSET_LIBRARY_USERNAME }}
+          password: ${{ secrets.GODOT_ASSET_STORE_PASSWORD }}
+          assetId: 2212
+          approveDirectly: "true"
+          assetTemplate: .github/asset-template.json.hb
       
