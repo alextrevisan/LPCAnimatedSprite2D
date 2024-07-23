@@ -1,5 +1,4 @@
-@tool
-class_name LPCAnimatedSprite3D extends Node2D
+class_name LPCAnimatedSprite3D extends Node3D
 
 @export var SpriteSheets:Array[LPCSpriteSheet]
 @export var DefaultAnimation:LPCEnum.LPCAnimation = LPCEnum.LPCAnimation.IDLE_DOWN
@@ -32,7 +31,7 @@ func play(animation: LPCEnum.LPCAnimation, fps: float = 5.0):
 
 func _notification(what):
 	if what == NOTIFICATION_EDITOR_POST_SAVE:
-		call_deferred("LoadAnimations")
+		call_deferred("_instantiate")
 
 func CreateAnimatedSprite():
 	var animatedSprite = AnimatedSprite3D.new()

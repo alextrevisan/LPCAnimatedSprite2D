@@ -1,10 +1,9 @@
-@tool
-class_name LPCAnimatedSprite2D extends Node
+extends Node2D
+class_name LPCAnimatedSprite2D
 
 @export var SpriteSheets:Array[LPCSpriteSheet]
 @export var DefaultAnimation:LPCEnum.LPCAnimation = LPCEnum.LPCAnimation.IDLE_DOWN
 
-@export_group("2D Properties")
 @export var Sprite2DTextureFilter:CanvasItem.TextureFilter = CanvasItem.TEXTURE_FILTER_NEAREST
 
 var lastOffset : float = 1.0
@@ -30,7 +29,7 @@ func play(animation: LPCEnum.LPCAnimation, fps: float = 5.0):
 
 func _notification(what):
 	if what == NOTIFICATION_EDITOR_POST_SAVE:
-		call_deferred("LoadAnimations")
+		call_deferred("_instantiate")
 
 func CreateAnimatedSprite():
 	var animatedSprite = AnimatedSprite2D.new()

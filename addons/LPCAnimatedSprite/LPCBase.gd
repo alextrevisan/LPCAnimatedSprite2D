@@ -13,7 +13,7 @@ func LoadAnimations(main_node : Node) -> void:
 	main_node.AnimationNames = LPCEnum.LPCAnimation.keys()
 	var children = main_node.get_children();
 	for child in children:
-		remove_child(child)
+		main_node.remove_child(child)
 		
 	for spriteSheet in main_node.SpriteSheets:
 		if spriteSheet == null:
