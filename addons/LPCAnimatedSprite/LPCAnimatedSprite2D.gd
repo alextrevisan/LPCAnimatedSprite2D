@@ -1,5 +1,6 @@
-extends Node2D
-class_name LPCAnimatedSprite2D
+@tool
+class_name LPCAnimatedSprite2D extends Node2D
+
 
 @export var SpriteSheets:Array[LPCSpriteSheet]
 @export var DefaultAnimation:LPCEnum.LPCAnimation = LPCEnum.LPCAnimation.IDLE_DOWN

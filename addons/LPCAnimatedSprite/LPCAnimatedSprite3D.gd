@@ -1,3 +1,4 @@
+@tool
 class_name LPCAnimatedSprite3D extends Node3D
 
 @export var SpriteSheets:Array[LPCSpriteSheet]
