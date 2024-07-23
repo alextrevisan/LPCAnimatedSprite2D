@@ -1,14 +1,16 @@
 @tool
-class_name LPCAnimatedSprite2D extends Node
+class_name LPCAnimatedSprite3D extends Node2D
 
 @export var SpriteSheets:Array[LPCSpriteSheet]
 @export var DefaultAnimation:LPCEnum.LPCAnimation = LPCEnum.LPCAnimation.IDLE_DOWN
 
-@export_group("2D Properties")
-@export var Sprite2DTextureFilter:CanvasItem.TextureFilter = CanvasItem.TEXTURE_FILTER_NEAREST
+const DEFAULT_3D_PIXEL_SIZE:float = 0.01
+@export var Sprite3DScale:float = 1
+@export var Sprite3DBillboard:BaseMaterial3D.BillboardMode = BaseMaterial3D.BILLBOARD_DISABLED
+@export var Sprite3DTextureFilter:BaseMaterial3D.TextureFilter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
 
-var lastOffset : float = 1.0
-var AnimationNames : Array
+var lastOffset:float = 1.0
+var AnimationNames:Array
 var LPC_base : LPCBase
 
 func _ready():
@@ -33,6 +35,10 @@ func _notification(what):
 		call_deferred("LoadAnimations")
 
 func CreateAnimatedSprite():
-	var animatedSprite = AnimatedSprite2D.new()
-	animatedSprite.texture_filter = Sprite2DTextureFilter
+	var animatedSprite = AnimatedSprite3D.new()
+	animatedSprite.pixel_size = Sprite3DScale * DEFAULT_3D_PIXEL_SIZE
+	animatedSprite.texture_filter = Sprite3DTextureFilter
+	animatedSprite.billboard = Sprite3DBillboard
+	animatedSprite.sorting_offset = lastOffset
+	lastOffset += 1.0
 	return animatedSprite
