@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/LPCAnimatedSprite/icon.png")
+@icon("res://addons/LPCAnimatedSprite/icon3d.png")
 class_name LPCAnimatedSprite3D extends Node3D
 
 @export var SpriteSheets:Array[LPCSpriteSheet]

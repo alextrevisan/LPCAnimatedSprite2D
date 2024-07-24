@@ -1,5 +1,5 @@
 @tool
-@icon("res://addons/LPCAnimatedSprite/icon.png")
+@icon("res://addons/LPCAnimatedSprite/icon2d.png")
 class_name LPCAnimatedSprite2D extends Node2D
 
 
