@@ -14,7 +14,7 @@ const universalFrameSize = 64
 
 var animation_textures = {}
 
-@export_enum("south", "north", "east", "west") var direction: String = "south":
+var direction: String = "south":
 	set(value):
 		if not animation_data or not value in animation_data.available_directions:
 			return
@@ -24,7 +24,7 @@ var animation_textures = {}
 	get:
 		return direction
 
-@export_enum("idle", "walk", "run", "jump") var current_animation: String = "idle":
+var current_animation: String = "idle":
 	set(value):
 		if not animation_data or not value in animation_data.available_animations:
 			return
@@ -50,24 +50,6 @@ func _get_property_list():
 	var properties = []
 	
 	if animation_data:
-		# Add dropdown for direction
-		properties.append({
-			"name": "direction",
-			"type": TYPE_STRING,
-			"usage": PROPERTY_USAGE_DEFAULT | PROPERTY_USAGE_SCRIPT_VARIABLE,
-			"hint": PROPERTY_HINT_ENUM,
-			"hint_string": ",".join(animation_data.available_directions.keys())
-		})
-		
-		# Add dropdown for animation
-		properties.append({
-			"name": "current_animation",
-			"type": TYPE_STRING,
-			"usage": PROPERTY_USAGE_DEFAULT | PROPERTY_USAGE_SCRIPT_VARIABLE,
-			"hint": PROPERTY_HINT_ENUM,
-			"hint_string": ",".join(animation_data.available_animations)
-		})
-		
 		# Add texture properties
 		for anim_name in animation_data.available_animations:
 			properties.append({

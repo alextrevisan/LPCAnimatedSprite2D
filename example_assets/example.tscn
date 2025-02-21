@@ -363,13 +363,9 @@ text = "Sprite parts spear"
 horizontal_alignment = 1
 
 [node name="LPCAnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/GridContainer/Control"]
-position = Vector2(104, 54)
 sprite_frames = SubResource("SpriteFrames_t31pj")
-animation = &"walk_north"
 script = ExtResource("1_c2mh6")
 animation_data = SubResource("Resource_3fufk")
-direction = "north"
-current_animation = "spellcast"
 spellcast_texture = null
 thrust_texture = null
 walk_texture = ExtResource("2_faeew")
