@@ -12,13 +12,12 @@ config_version=5
 
 config/name="LPCExampleProject"
 run/main_scene="res://example_assets/example.tscn"
-config/features=PackedStringArray("4.2", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [debug]
 
 gdscript/warnings/untyped_declaration=2
-gdscript/warnings/renamed_in_godot_4_hint=true
 
 [display]
 
