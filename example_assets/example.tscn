@@ -136,147 +136,147 @@ region = Rect2(448, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qqcyt"]
 atlas = ExtResource("2_faeew")
-region = Rect2(0, 64, 64, 64)
+region = Rect2(64, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vj7bs"]
 atlas = ExtResource("2_faeew")
-region = Rect2(64, 64, 64, 64)
+region = Rect2(128, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_woakl"]
 atlas = ExtResource("2_faeew")
-region = Rect2(128, 64, 64, 64)
+region = Rect2(192, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t31pj"]
 atlas = ExtResource("2_faeew")
-region = Rect2(192, 64, 64, 64)
+region = Rect2(256, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3fufk"]
 atlas = ExtResource("2_faeew")
-region = Rect2(256, 64, 64, 64)
+region = Rect2(320, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lq6fh"]
 atlas = ExtResource("2_faeew")
-region = Rect2(320, 64, 64, 64)
+region = Rect2(384, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hprvd"]
 atlas = ExtResource("2_faeew")
-region = Rect2(384, 64, 64, 64)
+region = Rect2(448, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wrc4q"]
 atlas = ExtResource("2_faeew")
-region = Rect2(448, 64, 64, 64)
+region = Rect2(512, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2qf1g"]
 atlas = ExtResource("2_faeew")
-region = Rect2(512, 64, 64, 64)
+region = Rect2(576, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_avr6h"]
 atlas = ExtResource("2_faeew")
-region = Rect2(0, 0, 64, 64)
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tr77i"]
 atlas = ExtResource("2_faeew")
-region = Rect2(64, 0, 64, 64)
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2u1qy"]
 atlas = ExtResource("2_faeew")
-region = Rect2(128, 0, 64, 64)
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b0ter"]
 atlas = ExtResource("2_faeew")
-region = Rect2(192, 0, 64, 64)
+region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yijiq"]
 atlas = ExtResource("2_faeew")
-region = Rect2(256, 0, 64, 64)
+region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_srvo4"]
 atlas = ExtResource("2_faeew")
-region = Rect2(320, 0, 64, 64)
+region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ocicr"]
 atlas = ExtResource("2_faeew")
-region = Rect2(384, 0, 64, 64)
+region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nl2kq"]
 atlas = ExtResource("2_faeew")
-region = Rect2(448, 0, 64, 64)
+region = Rect2(512, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_54ui4"]
 atlas = ExtResource("2_faeew")
-region = Rect2(512, 0, 64, 64)
+region = Rect2(576, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x1msa"]
 atlas = ExtResource("2_faeew")
-region = Rect2(0, 128, 64, 64)
+region = Rect2(64, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_766yi"]
 atlas = ExtResource("2_faeew")
-region = Rect2(64, 128, 64, 64)
+region = Rect2(128, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xtqfx"]
 atlas = ExtResource("2_faeew")
-region = Rect2(128, 128, 64, 64)
+region = Rect2(192, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w3ng4"]
 atlas = ExtResource("2_faeew")
-region = Rect2(192, 128, 64, 64)
+region = Rect2(256, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lyxfg"]
 atlas = ExtResource("2_faeew")
-region = Rect2(256, 128, 64, 64)
+region = Rect2(320, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rhknm"]
 atlas = ExtResource("2_faeew")
-region = Rect2(320, 128, 64, 64)
+region = Rect2(384, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bhkru"]
 atlas = ExtResource("2_faeew")
-region = Rect2(384, 128, 64, 64)
+region = Rect2(448, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fgihw"]
 atlas = ExtResource("2_faeew")
-region = Rect2(448, 128, 64, 64)
+region = Rect2(512, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1wdq4"]
 atlas = ExtResource("2_faeew")
-region = Rect2(512, 128, 64, 64)
+region = Rect2(576, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_01hl2"]
 atlas = ExtResource("2_faeew")
-region = Rect2(0, 192, 64, 64)
+region = Rect2(64, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s4exv"]
 atlas = ExtResource("2_faeew")
-region = Rect2(64, 192, 64, 64)
+region = Rect2(128, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vrevd"]
 atlas = ExtResource("2_faeew")
-region = Rect2(128, 192, 64, 64)
+region = Rect2(192, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rvkbu"]
 atlas = ExtResource("2_faeew")
-region = Rect2(192, 192, 64, 64)
+region = Rect2(256, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aif38"]
 atlas = ExtResource("2_faeew")
-region = Rect2(256, 192, 64, 64)
+region = Rect2(320, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_77np2"]
 atlas = ExtResource("2_faeew")
-region = Rect2(320, 192, 64, 64)
+region = Rect2(384, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g73gn"]
 atlas = ExtResource("2_faeew")
-region = Rect2(384, 192, 64, 64)
+region = Rect2(448, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_65ymm"]
 atlas = ExtResource("2_faeew")
-region = Rect2(448, 192, 64, 64)
+region = Rect2(512, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c25yj"]
 atlas = ExtResource("2_faeew")
-region = Rect2(512, 192, 64, 64)
+region = Rect2(576, 192, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hkn5c"]
 animations = [{
@@ -528,6 +528,7 @@ animations = [{
 [sub_resource type="Resource" id="Resource_lei1c"]
 script = ExtResource("4_pe7pv")
 available_animations = Array[String](["spellcast", "thrust", "walk", "slash", "shoot", "hurt", "climb", "idle", "jump", "sit", "emote", "run", "combat_idle", "backslash", "halfslash"])
+required_spritesheets = Array[String](["spellcast", "thrust", "walk", "slash", "shoot", "hurt", "climb", "idle", "jump", "sit", "emote", "run", "combat_idle", "backslash", "halfslash"])
 available_directions = {
 "east": 1,
 "north": 0,
@@ -550,6 +551,23 @@ animation_frame_counts = {
 &"spellcast": 7,
 &"thrust": 8,
 &"walk": 9
+}
+initial_sprite_indices = {
+&"backslash": 0,
+&"climb": 0,
+&"combat_idle": 0,
+&"emote": 0,
+&"halfslash": 0,
+&"hurt": 0,
+&"idle": 0,
+&"jump": 0,
+&"run": 0,
+&"shoot": 0,
+&"sit": 0,
+&"slash": 0,
+&"spellcast": 0,
+&"thrust": 0,
+&"walk": 1
 }
 
 [node name="example" type="Node2D"]
@@ -608,7 +626,10 @@ text = "Sprite parts spear"
 horizontal_alignment = 1
 
 [node name="LPCAnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/GridContainer/Control"]
+position = Vector2(95, 61)
 sprite_frames = SubResource("SpriteFrames_hkn5c")
+animation = &"walk_south"
+frame_progress = 0.211048
 script = ExtResource("1_c2mh6")
 animation_data = SubResource("Resource_lei1c")
 spellcast_texture = null

@@ -22,6 +22,26 @@ const FRAME_SIZE = 64
 	"halfslash"
 ]
 
+@export var required_spritesheets: Array[String] = [
+	"spellcast",
+	"thrust",
+	"walk",
+	"slash",
+	"shoot",
+	"hurt",
+	"climb",
+	"idle",
+	"jump",
+	"sit",
+	"emote",
+	"run",
+	"combat_idle",
+	"backslash",
+	"halfslash"
+]
+
+
+
 @export var available_directions: Dictionary = {
 	"north": 0,
 	"east": 1,
@@ -45,4 +65,22 @@ const FRAME_SIZE = 64
 	combat_idle = 2,
 	backslash = 13,
 	halfslash = 7
+}
+
+@export var initial_sprite_indices: Dictionary = {
+	"spellcast" = 0,
+	"thrust" = 0,
+	"walk" = 1,
+	"slash" = 0,
+	"shoot" = 0,
+	"hurt" = 0,
+	"climb" = 0,
+	"idle" = 0,
+	"jump" = 0,
+	"sit" = 0,
+	"emote" = 0,
+	"run" = 0,
+	"combat_idle" = 0,
+	"backslash" = 0,
+	"halfslash" = 0
 }

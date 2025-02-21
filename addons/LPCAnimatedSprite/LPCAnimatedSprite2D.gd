@@ -49,7 +49,7 @@ func _get_property_list():
 	
 	if animation_data:
 		# Add texture properties
-		for anim_name in animation_data.available_animations:
+		for anim_name in animation_data.required_spritesheets:
 			properties.append({
 				"name": anim_name + "_texture",
 				"type": TYPE_OBJECT,
@@ -117,7 +117,8 @@ func _setup_sprite_frames():
 		if not texture:
 			continue
 		
-		var frame_count = animation_data.animation_frame_counts[anim_name]
+		var initial_index = animation_data.initial_sprite_indices[anim_name]
+		var frame_count = animation_data.animation_frame_counts[anim_name] - initial_index
 		
 		for dir in animation_data.available_directions:
 			var anim_key = anim_name + "_" + dir
@@ -133,7 +134,7 @@ func _setup_sprite_frames():
 				var atlas = AtlasTexture.new()
 				atlas.atlas = texture
 				atlas.region = Rect2(
-					frame_idx * animation_data.FRAME_SIZE,  # x position
+					(frame_idx + initial_index) * animation_data.FRAME_SIZE,  # x position
 					dir_y * animation_data.FRAME_SIZE,      # y position
 					animation_data.FRAME_SIZE,              # width
 					animation_data.FRAME_SIZE               # height
