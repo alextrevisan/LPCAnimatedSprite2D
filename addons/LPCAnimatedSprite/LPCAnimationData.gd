@@ -2,6 +2,8 @@
 extends Resource
 class_name LPCAnimationData
 
+const FRAME_SIZE = 64
+
 @export var available_animations: Array[String] = [
 	"spellcast",
 	"thrust",

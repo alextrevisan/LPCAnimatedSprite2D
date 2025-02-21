@@ -1,8 +1,6 @@
 @tool
 class_name LPCAnimatedSprite2D extends AnimatedSprite2D
 
-const universalFrameSize = 64
-
 @export var animation_data: LPCAnimationData:
 	set(value):
 		animation_data = value
@@ -135,10 +133,10 @@ func _setup_sprite_frames():
 				var atlas = AtlasTexture.new()
 				atlas.atlas = texture
 				atlas.region = Rect2(
-					frame_idx * universalFrameSize,  # x position
-					dir_y * universalFrameSize,      # y position
-					universalFrameSize,              # width
-					universalFrameSize               # height
+					frame_idx * animation_data.FRAME_SIZE,  # x position
+					dir_y * animation_data.FRAME_SIZE,      # y position
+					animation_data.FRAME_SIZE,              # width
+					animation_data.FRAME_SIZE               # height
 				)
 				sprite_frames.add_frame(anim_key, atlas)
 	
