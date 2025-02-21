@@ -61,7 +61,7 @@ func _get_property_list():
 			properties.append({
 				"name": anim_name + "_texture",
 				"type": TYPE_OBJECT,
-				"usage": PROPERTY_USAGE_DEFAULT,
+				"usage": PROPERTY_USAGE_NO_EDITOR,
 				"hint": PROPERTY_HINT_RESOURCE_TYPE,
 				"hint_string": "Texture2D"
 			})

@@ -3082,8 +3082,74 @@ initial_sprite_indices = {
 "thrust": 0,
 "walk": 1
 }
-animation_loops = null
-animation_speeds = null
+animation_loops = {
+&"backslash": true,
+&"climb": true,
+&"combat_idle": true,
+&"emote": true,
+&"halfslash": true,
+&"hurt": true,
+&"idle": true,
+&"jump": true,
+&"run": true,
+&"shoot": true,
+&"sit": true,
+&"slash": true,
+&"spellcast": true,
+&"thrust": true,
+&"walk": true
+}
+animation_speeds = {
+&"backslash": 8,
+&"climb": 8,
+&"combat_idle": 8,
+&"emote": 8,
+&"halfslash": 8,
+&"hurt": 8,
+&"idle": 8,
+&"jump": 8,
+&"run": 8,
+&"shoot": 8,
+&"sit": 8,
+&"slash": 8,
+&"spellcast": 8,
+&"thrust": 8,
+&"walk": 8
+}
+animation_rows = {
+&"backslash": 0,
+&"climb": 0,
+&"combat_idle": 0,
+&"emote": 0,
+&"halfslash": 0,
+&"hurt": 0,
+&"idle": 0,
+&"jump": 0,
+&"run": 0,
+&"shoot": 0,
+&"sit": 0,
+&"slash": 0,
+&"spellcast": 0,
+&"thrust": 0,
+&"walk": 0
+}
+frame_sizes = {
+&"backslash": 64,
+&"climb": 64,
+&"combat_idle": 64,
+&"emote": 64,
+&"halfslash": 64,
+&"hurt": 64,
+&"idle": 64,
+&"jump": 64,
+&"run": 64,
+&"shoot": 64,
+&"sit": 64,
+&"slash": 64,
+&"spellcast": 64,
+&"thrust": 64,
+&"walk": 64
+}
 
 [node name="example" type="Node2D"]
 script = ExtResource("1_7upka")
@@ -3143,8 +3209,8 @@ horizontal_alignment = 1
 [node name="LPCAnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/GridContainer/Control"]
 position = Vector2(106, 64)
 sprite_frames = SubResource("SpriteFrames_2g54r")
-animation = &"walk_south"
-frame_progress = 0.55164
+animation = &"idle_south"
+frame_progress = 0.294955
 script = ExtResource("1_c2mh6")
 spritesheets_path = "res://example_assets/spritesheet/male_animations/standard/"
 animation_data = SubResource("Resource_d5jh1")
