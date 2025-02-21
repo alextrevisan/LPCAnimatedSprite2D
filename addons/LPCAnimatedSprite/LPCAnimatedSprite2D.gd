@@ -7,9 +7,10 @@ class_name LPCAnimatedSprite2D extends AnimatedSprite2D
 		_load_spritesheets()
 		_setup_sprite_frames()
 
-@export var animation_data: LPCAnimationData:
+@export var animation_data: LPCAnimationDataBase:
 	set(value):
 		animation_data = value
+		print(animation_data)
 		_setup_animation_properties()
 		_load_spritesheets()
 		_setup_sprite_frames()
@@ -151,30 +152,45 @@ func _setup_sprite_frames():
 		if not texture:
 			continue
 		
-		var initial_index = animation_data.initial_sprite_indices[anim_name]
-		var frame_count = animation_data.animation_frame_counts[anim_name] - initial_index
+		var initial_index = animation_data.initial_sprite_indices.get(anim_name, 0)
+		var frame_count = animation_data.animation_frame_counts.get(anim_name, 0) - initial_index
 		
 		for dir in animation_data.available_directions:
 			var anim_key = anim_name + "_" + dir
-			var dir_y = animation_data.available_directions[dir]
+			var dir_y = animation_data.available_directions.get(dir, 0)
 			
 			# Add animation to SpriteFrames
 			sprite_frames.add_animation(anim_key)
-			sprite_frames.set_animation_speed(anim_key, animation_data.animation_speeds[anim_name])
-			sprite_frames.set_animation_loop(anim_key, animation_data.animation_loops[anim_name])
-			var frame_size = animation_data.frame_sizes[anim_name]
-			var animation_rows = animation_data.animation_rows[anim_name]
+			sprite_frames.set_animation_speed(anim_key, animation_data.animation_speeds.get(anim_name, 1.0))
+			sprite_frames.set_animation_loop(anim_key, animation_data.animation_loops.get(anim_name, true))
+			var frame_size = animation_data.frame_sizes.get(anim_name, 0)
+			var animation_rows = animation_data.animation_rows.get(anim_name, 0)
+			var custom_frames = animation_data.custom_frames.get(anim_name, null)
+			print("Custom frames: %s | Anim name: %s" % [custom_frames, anim_name])
+			if not custom_frames:
 			# Add frames for this animation
-			for frame_idx in range(frame_count):
-				var atlas = AtlasTexture.new()
-				atlas.atlas = texture
-				atlas.region = Rect2(
-					(frame_idx + initial_index) * frame_size,  # x position
-					dir_y * frame_size + (animation_rows * frame_size),      # y position
-					frame_size,              # width
-					frame_size               # height
-				)
-				sprite_frames.add_frame(anim_key, atlas)
+				for frame_idx in range(frame_count):
+					var atlas = AtlasTexture.new()
+					atlas.atlas = texture
+					atlas.region = Rect2(
+						(frame_idx + initial_index) * frame_size,  # x position
+						dir_y * frame_size + (animation_rows * frame_size),      # y position
+						frame_size,              # width
+						frame_size               # height
+					)
+					sprite_frames.add_frame(anim_key, atlas)
+			else:
+				for frame_idx in custom_frames:
+					print("Adding custom frame: %s" % frame_idx)
+					var atlas = AtlasTexture.new()
+					atlas.atlas = texture
+					atlas.region = Rect2(
+						(frame_idx + initial_index) * frame_size,  # x position
+						dir_y * frame_size + (animation_rows * frame_size),      # y position
+						frame_size,              # width
+						frame_size               # height
+					)
+					sprite_frames.add_frame(anim_key, atlas)
 	
 	# Only play if the current animation exists
 	if current_animation + "_" + direction in sprite_frames.get_animation_names():
