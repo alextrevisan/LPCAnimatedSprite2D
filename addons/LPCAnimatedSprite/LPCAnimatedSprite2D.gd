@@ -37,7 +37,7 @@ func _get_property_list():
 			properties.append({
 				"name": prop_name,
 				"type": TYPE_OBJECT,
-				"usage": PROPERTY_USAGE_DEFAULT,
+				"usage": PROPERTY_USAGE_NO_EDITOR,
 				"hint": PROPERTY_HINT_RESOURCE_TYPE,
 				"hint_string": "Texture2D"
 			})
@@ -72,7 +72,10 @@ func _load_spritesheets():
 	if not animation_data:
 		return
 	
-	# Clear textures for animations that no longer exist
+	clear_textures_for_animations_that_no_longer_exist()
+	load_textures_directly_from_required_spritesheets()
+
+func clear_textures_for_animations_that_no_longer_exist():
 	var textures_to_remove = []
 	for anim_name in animation_textures:
 		if not anim_name in animation_data.available_animations:
@@ -80,8 +83,8 @@ func _load_spritesheets():
 	
 	for anim_name in textures_to_remove:
 		animation_textures.erase(anim_name)
-	
-	# Load textures directly from the required spritesheets
+
+func load_textures_directly_from_required_spritesheets():
 	for spritesheet in animation_data.required_spritesheets:
 		var texture_path = _spritesheets_path.path_join(spritesheet + ".png")
 		var texture = load(texture_path)
@@ -110,8 +113,7 @@ func _setup_animation_properties():
 func _setup_sprite_frames():
 	if not animation_data or not sprite_frames:
 		return
-	
-	print("Setting up sprite frames")
+
 	sprite_frames.clear_all()
 	
 	for anim_name in animation_data.available_animations:
@@ -146,7 +148,6 @@ func _setup_sprite_frames():
 					atlas.region = Rect2(frame_idx * frame_size, (animation_rows + direction_offset) * frame_size, frame_size, frame_size)
 					sprite_frames.add_frame(anim_key, atlas)
 	
-	print("Available animations: ", sprite_frames.get_animation_names())
 	if current_animation and direction:
 		var anim_key = current_animation + "_" + direction
 		if sprite_frames.has_animation(anim_key):

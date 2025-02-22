@@ -1,9 +1,9 @@
 [gd_scene load_steps=467 format=3 uid="uid://lgbpo2nx4g16"]
 
 [ext_resource type="Script" uid="uid://d3qrtghej5upp" path="res://example_assets/example.gd" id="1_7upka"]
-[ext_resource type="Script" uid="uid://dn724gbsh1jky" path="res://addons/LPCAnimatedSprite/LPCAnimatedSprite2D.gd" id="1_c2mh6"]
 [ext_resource type="Texture2D" uid="uid://cder8n4xba7gh" path="res://example_assets/spritesheet/male_animations/standard/single.png" id="2_pe7pv"]
-[ext_resource type="Script" uid="uid://co52sha1kv8jp" path="res://addons/LPCAnimatedSprite/LPCAnimationDataSingleSprite.gd" id="4_6q524"]
+[ext_resource type="Script" uid="uid://dn724gbsh1jky" path="res://addons/LPCAnimatedSprite/LPCAnimatedSprite2D.gd" id="3_6q524"]
+[ext_resource type="Script" uid="uid://co52sha1kv8jp" path="res://addons/LPCAnimatedSprite/LPCAnimationDataSingleSprite.gd" id="4_1m4py"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pe7pv"]
 atlas = ExtResource("2_pe7pv")
@@ -1845,7 +1845,7 @@ region = Rect2(448, 704, 64, 64)
 atlas = ExtResource("2_pe7pv")
 region = Rect2(512, 704, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_f708b"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_k5ttb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -3505,7 +3505,7 @@ animations = [{
 
 [sub_resource type="Resource" id="Resource_q8egk"]
 resource_name = "LPCAnimationDataSingleSprite"
-script = ExtResource("4_6q524")
+script = ExtResource("4_1m4py")
 available_animations = Array[String](["spellcast", "thrust", "walk", "slash", "shoot", "hurt", "climb", "idle", "jump", "sit", "emote", "run", "combat_idle", "backslash", "halfslash"])
 required_spritesheets = Array[String](["single"])
 available_directions = {
@@ -3762,11 +3762,11 @@ text = "Sprite parts spear"
 horizontal_alignment = 1
 
 [node name="LPCAnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/GridContainer/Control"]
-position = Vector2(109, 74)
-sprite_frames = SubResource("SpriteFrames_f708b")
+position = Vector2(106, 72)
+sprite_frames = SubResource("SpriteFrames_k5ttb")
 animation = &"spellcast_south"
-frame_progress = 0.586256
-script = ExtResource("1_c2mh6")
+frame_progress = 0.441041
+script = ExtResource("3_6q524")
 spritesheets_path = "res://example_assets/spritesheet/male_animations/standard"
 animation_data = SubResource("Resource_q8egk")
 single_texture = null

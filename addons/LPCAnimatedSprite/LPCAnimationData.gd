@@ -151,7 +151,6 @@ func _setup_data() -> void:
 		"halfslash": 0
 	}
 
-
 	frame_sizes = {
 		"spellcast": 64,
 		"thrust": 64,
