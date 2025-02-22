@@ -38,10 +38,21 @@ func _init() -> void:
 	]
 
 	available_directions = {
-		"north": 0,
-		"east": 1,
-		"south": 2,
-		"west": 3
+		"spellcast" : {"north": 0, "east": 1, "south": 2,"west": 3},
+		"thrust" : {"north": 0, "east": 1, "south": 2,"west": 3},
+		"walk" : {"north": 0, "east": 1, "south": 2,"west": 3},
+		"slash" : {"north": 0, "east": 1, "south": 2,"west": 3},
+		"shoot" : {"north": 0, "east": 1, "south": 2,"west": 3},
+		"hurt" : {"south": 0},
+		"climb" : {"north": 0, "east": 1, "south": 2,"west": 3},
+		"idle" : {"north": 0, "east": 1, "south": 2,"west": 3},
+		"jump" : {"north": 0, "east": 1, "south": 2,"west": 3},
+		"sit" : {"north": 0, "east": 1, "south": 2,"west": 3},
+		"emote" : {"north": 0, "east": 1, "south": 2,"west": 3},
+		"run" : {"north": 0, "east": 1, "south": 2,"west": 3},
+		"combat_idle" : {"north": 0, "east": 1, "south": 2,"west": 3},
+		"backslash" : {"north": 0, "east": 1, "south": 2,"west": 3},
+		"halfslash" : {"north": 0, "east": 1, "south": 2,"west": 3}
 	}
 
 	animation_frame_counts = {
@@ -86,7 +97,7 @@ func _init() -> void:
 		walk = true,
 		slash = true,
 		shoot = true,
-		hurt = true,
+		hurt = false,
 		climb = true,
 		idle = true,
 		jump = true,

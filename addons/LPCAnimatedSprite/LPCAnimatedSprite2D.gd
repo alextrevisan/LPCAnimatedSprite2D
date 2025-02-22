@@ -22,7 +22,10 @@ var animation_textures = {}
 
 var direction: String = "south":
 	set(value):
-		if not animation_data or not value in animation_data.available_directions:
+		if not animation_data:
+			return
+		var available_dirs = animation_data.available_directions.get(current_animation, {})
+		if not value in available_dirs:
 			return
 		direction = value
 		if sprite_frames and current_animation + "_" + direction in sprite_frames.get_animation_names():
@@ -35,6 +38,11 @@ var current_animation: String = "idle":
 		if not animation_data or not value in animation_data.available_animations:
 			return
 		current_animation = value
+		# Also validate that the current direction is valid for this animation
+		var available_dirs = animation_data.available_directions.get(current_animation, {})
+		if not direction in available_dirs:
+			# Set to first available direction for this animation
+			direction = available_dirs.keys()[0] if available_dirs.size() > 0 else ""
 		if sprite_frames and current_animation + "_" + direction in sprite_frames.get_animation_names():
 			play(current_animation + "_" + direction)
 	get:
@@ -130,8 +138,10 @@ func _setup_animation_properties():
 	if not current_animation in animation_data.available_animations:
 		current_animation = animation_data.available_animations[0] if animation_data.available_animations.size() > 0 else ""
 		
-	if not direction in animation_data.available_directions:
-		direction = animation_data.available_directions.keys()[0] if animation_data.available_directions.size() > 0 else ""
+	# Check if direction is valid for current animation
+	var available_dirs = animation_data.available_directions.get(current_animation, {})
+	if not direction in available_dirs:
+		direction = available_dirs.keys()[0] if available_dirs.size() > 0 else ""
 	
 	notify_property_list_changed()
 
@@ -155,9 +165,10 @@ func _setup_sprite_frames():
 		var initial_index = animation_data.initial_sprite_indices.get(anim_name, 0)
 		var frame_count = animation_data.animation_frame_counts.get(anim_name, 0) - initial_index
 		
-		for dir in animation_data.available_directions:
+		var available_dirs = animation_data.available_directions.get(anim_name, {})
+		for dir in available_dirs:
 			var anim_key = anim_name + "_" + dir
-			var dir_y = animation_data.available_directions.get(dir, 0)
+			var dir_y = available_dirs.get(dir, 0)
 			
 			# Add animation to SpriteFrames
 			sprite_frames.add_animation(anim_key)
@@ -204,8 +215,9 @@ func play_animation(anim_name: String = "idle", dir: String = "south"):
 		push_error("Animation '%s' not found or texture not set" % anim_name)
 		return
 		
-	if not dir in animation_data.available_directions:
-		push_error("Direction '%s' not found" % dir)
+	var available_dirs = animation_data.available_directions.get(anim_name, {})
+	if not dir in available_dirs:
+		push_error("Direction '%s' not found for animation '%s'" % [dir, anim_name])
 		return
 		
 	current_animation = anim_name
