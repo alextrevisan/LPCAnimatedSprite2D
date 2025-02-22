@@ -1,4 +1,10 @@
-class_name LPCAnimationDataBase extends Resource
+@tool
+extends Resource
+class_name LPCAnimationDataBase
+
+# This line makes the script itself a resource
+func _init():
+	resource_name = "LPCAnimationDataBase"
 
 @export var available_animations: Array[String] = []
 
@@ -19,4 +25,3 @@ class_name LPCAnimationDataBase extends Resource
 @export var frame_sizes: Dictionary = {}
 
 @export var custom_frames: Dictionary = {}
-

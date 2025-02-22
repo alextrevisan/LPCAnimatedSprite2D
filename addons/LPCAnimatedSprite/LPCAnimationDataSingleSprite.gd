@@ -1,9 +1,8 @@
 @tool
-extends LPCAnimationDataBase
-class_name LPCAnimationData
+class_name LPCAnimationDataSingleSprite extends LPCAnimationDataBase
 
-func _init():
-	resource_name = "LPCAnimationData"
+func _init() -> void:
+	resource_name = "LPCAnimationDataSingleSprite"
 	_setup_data()
 
 func _setup_data() -> void:
@@ -26,21 +25,7 @@ func _setup_data() -> void:
 	]
 
 	required_spritesheets = [
-		"spellcast",
-		"thrust",
-		"walk",
-		"slash",
-		"shoot",
-		"hurt",
-		"climb",
-		"idle",
-		"jump",
-		"sit",
-		"emote",
-		"run",
-		"combat_idle",
-		"backslash",
-		"halfslash"
+		"single"
 	]
 
 	available_directions = {
@@ -50,7 +35,7 @@ func _setup_data() -> void:
 		"slash" : {"north": 0, "east": 1, "south": 2,"west": 3},
 		"shoot" : {"north": 0, "east": 1, "south": 2,"west": 3},
 		"hurt" : {"south": 0},
-		"climb" : {"north": 0, "east": 1, "south": 2,"west": 3},
+		"climb" : {"south": 0},
 		"idle" : {"north": 0, "east": 1, "south": 2,"west": 3},
 		"jump" : {"north": 0, "east": 1, "south": 2,"west": 3},
 		"sit" : {"north": 0, "east": 1, "south": 2,"west": 3},
@@ -134,23 +119,22 @@ func _setup_data() -> void:
 	}
 
 	animation_rows = {
-		"spellcast": 0,
-		"thrust": 0,
-		"walk": 0,
-		"slash": 0,
-		"shoot": 0,
-		"hurt": 0,
-		"climb": 0,
-		"idle": 0,
-		"jump": 0,
-		"sit": 0,
-		"emote": 0,
-		"run": 0,
-		"combat_idle": 0,
-		"backslash": 0,
-		"halfslash": 0
+		"spellcast": 0,  # data-row="0"
+		"thrust": 4,     # data-row="4"
+		"walk": 8,       # data-row="8"
+		"slash": 12,     # data-row="12"
+		"shoot": 16,     # data-row="16"
+		"hurt": 20,      # data-row="20"
+		"climb": 21,     # data-row="21"
+		"idle": 22,      # data-row="22"
+		"jump": 26,      # data-row="26"
+		"sit": 30,       # data-row="30"
+		"emote": 34,     # data-row="34"
+		"run": 38,       # data-row="38"
+		"combat_idle": 42,  # data-row="42"
+		"backslash": 46,    # data-row="46" (1h_backslash)
+		"halfslash": 50     # data-row="50" (1h_halfslash)
 	}
-
 
 	frame_sizes = {
 		"spellcast": 64,
@@ -171,5 +155,10 @@ func _setup_data() -> void:
 	}
 
 	custom_frames = {
-		"backslash": [0,1,2,3,4,5,7,8,9,10,11,12],
+		"idle": [0, 0, 1],           # data-cycle-custom="0-0-1"
+		"jump": [0, 1, 2, 3, 4, 1],  # data-cycle-custom="0-1-2-3-4-1"
+		"sit": [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2],  # data-cycle-custom="0-0-0-0-0-1-1-1-1-1-2-2-2-2-2"
+		"emote": [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2],  # data-cycle-custom="0-0-0-0-0-1-1-1-1-1-2-2-2-2-2"
+		"combat_idle": [0, 0, 1],    # data-cycle-custom="0-0-1"
+		"backslash": [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12]  # data-cycle-custom="0-1-2-3-4-5-7-8-9-10-11-12"
 	}
