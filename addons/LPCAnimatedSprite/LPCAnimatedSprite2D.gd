@@ -1,4 +1,5 @@
 @tool
+@icon("res://addons/LPCAnimatedSprite/icon2d.png")
 class_name LPCAnimatedSprite2D extends AnimatedSprite2D
 
 var _spritesheets_path: String:
