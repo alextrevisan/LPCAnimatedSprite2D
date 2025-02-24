@@ -6,7 +6,9 @@ extends Node2D
 @onready var AnimationList:OptionButton = $CanvasLayer/Control/VBoxContainer/Animation
 
 func _ready() -> void:
-	$CanvasLayer/GridContainer/Control/LPCAnimatedSprite2D.play("walk_east")
-
+	$CanvasLayer/GridContainer/Control/LPCAnimatedSprite2D.play("walk_south")
+	$CanvasLayer/GridContainer/Control2/LPCAnimatedSprite2D.play("walk_south")
+	$CanvasLayer/GridContainer/Control3/LPCAnimatedSprite2D.play("walk_south")
+	
 func _on_animation_item_selected(index:int) -> void:
 	pass
