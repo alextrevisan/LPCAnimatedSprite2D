@@ -135,18 +135,19 @@ func _setup_sprite_frames():
 			var animation_rows = animation_data.animation_rows[anim_name]
 			var direction_offset = animation_data.available_directions[anim_name][dir]
 			var custom_frames = animation_data.custom_frames.get(anim_name, null)
+			var base_frame_size = animation_data.base_animation_size
 			
 			if custom_frames:
 				for frame_idx in custom_frames:
 					var atlas = AtlasTexture.new()
 					atlas.atlas = texture
-					atlas.region = Rect2(frame_idx * frame_size, (animation_rows + direction_offset) * frame_size, frame_size, frame_size)
+					atlas.region = Rect2(frame_idx * frame_size, animation_rows * base_frame_size + (direction_offset * frame_size), frame_size, frame_size)
 					sprite_frames.add_frame(anim_key, atlas)
 			else:
 				for frame_idx in range(frame_count):
 					var atlas = AtlasTexture.new()
 					atlas.atlas = texture
-					atlas.region = Rect2(frame_idx * frame_size, (animation_rows + direction_offset) * frame_size, frame_size, frame_size)
+					atlas.region = Rect2(frame_idx * frame_size, animation_rows * base_frame_size + (direction_offset * frame_size), frame_size, frame_size)
 					sprite_frames.add_frame(anim_key, atlas)
 	
 	if current_animation and direction:

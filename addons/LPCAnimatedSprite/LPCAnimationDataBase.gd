@@ -5,6 +5,8 @@ class_name LPCAnimationDataBase
 # This line makes the script itself a resource
 func _init():
 	resource_name = "LPCAnimationDataBase"
+	
+@export var base_animation_size: int = 64
 
 @export var available_animations: Array[String] = []
 

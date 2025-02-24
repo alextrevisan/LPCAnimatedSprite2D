@@ -6,6 +6,8 @@ func _init() -> void:
 	_setup_data()
 
 func _setup_data() -> void:
+	base_animation_size = 64
+	
 	available_animations = [
 		"spellcast",
 		"thrust",
@@ -21,7 +23,10 @@ func _setup_data() -> void:
 		"run",
 		"combat_idle",
 		"backslash",
-		"halfslash"
+		"halfslash",
+		"slash_oversize",
+		"slash_reverse_oversize",
+		"thrust_oversize"
 	]
 
 	required_spritesheets = [
@@ -43,7 +48,10 @@ func _setup_data() -> void:
 		"run" : {"north": 0, "east": 1, "south": 2,"west": 3},
 		"combat_idle" : {"north": 0, "east": 1, "south": 2,"west": 3},
 		"backslash" : {"north": 0, "east": 1, "south": 2,"west": 3},
-		"halfslash" : {"north": 0, "east": 1, "south": 2,"west": 3}
+		"halfslash" : {"north": 0, "east": 1, "south": 2,"west": 3},
+		"slash_oversize" : {"north": 0, "east": 1, "south": 2,"west": 3},
+		"slash_reverse_oversize" : {"north": 0, "east": 1, "south": 2,"west": 3},
+		"thrust_oversize" : {"north": 0, "east": 1, "south": 2,"west": 3}
 	}
 
 	animation_frame_counts = {
@@ -61,7 +69,10 @@ func _setup_data() -> void:
 		"run": 8,
 		"combat_idle": 2,
 		"backslash": 13,
-		"halfslash": 7
+		"halfslash": 7,
+		"slash_oversize": 6,
+		"slash_reverse_oversize": 6,
+		"thrust_oversize": 6
 	}
 
 	initial_sprite_indices = {
@@ -79,7 +90,10 @@ func _setup_data() -> void:
 		"run": 0,
 		"combat_idle": 0,
 		"backslash": 0,
-		"halfslash": 0
+		"halfslash": 0,
+		"slash_oversize": 0,
+		"slash_reverse_oversize": 0,
+		"thrust_oversize": 0
 	}
 
 	animation_loops = {
@@ -97,7 +111,10 @@ func _setup_data() -> void:
 		"run": true,
 		"combat_idle": true,
 		"backslash": true,
-		"halfslash": true
+		"halfslash": true,
+		"slash_oversize": true,
+		"slash_reverse_oversize": true,
+		"thrust_oversize": true
 	}
 
 	animation_speeds = {
@@ -115,7 +132,10 @@ func _setup_data() -> void:
 		"run": 8,
 		"combat_idle": 8,
 		"backslash": 8,
-		"halfslash": 8
+		"halfslash": 8,
+		"slash_oversize": 8,
+		"slash_reverse_oversize": 8,
+		"thrust_oversize": 8
 	}
 
 	animation_rows = {
@@ -133,7 +153,10 @@ func _setup_data() -> void:
 		"run": 38,
 		"combat_idle": 42,
 		"backslash": 46,
-		"halfslash": 50
+		"halfslash": 50,
+		"slash_oversize": 54,
+		"slash_reverse_oversize": 66,
+		"thrust_oversize": 78
 	}
 
 	frame_sizes = {
@@ -151,10 +174,14 @@ func _setup_data() -> void:
 		"run": 64,
 		"combat_idle": 64,
 		"backslash": 64,
-		"halfslash": 64
+		"halfslash": 64,
+		"slash_oversize": 192,
+		"slash_reverse_oversize": 192,
+		"thrust_oversize": 192
 	}
 
 	custom_frames = {
+		"walk": [1, 2, 3, 4, 5, 6, 7, 8],
 		"idle": [0, 0, 1],
 		"jump": [0, 1, 2, 3, 4, 1],
 		"sit": [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2],

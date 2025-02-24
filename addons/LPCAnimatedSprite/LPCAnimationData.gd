@@ -7,6 +7,8 @@ func _init():
 	_setup_data()
 
 func _setup_data() -> void:
+	base_animation_size = 64
+	
 	available_animations = [
 		"spellcast",
 		"thrust",
@@ -197,5 +199,11 @@ func _setup_data() -> void:
 	}
 
 	custom_frames = {
-		"backslash": [0,1,2,3,4,5,7,8,9,10,11,12],
+		"walk": [1, 2, 3, 4, 5, 6, 7, 8],
+		"idle": [0, 0, 1],
+		"jump": [0, 1, 2, 3, 4, 1],
+		"sit": [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2],
+		"emote": [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2],
+		"combat_idle": [0, 0, 1],
+		"backslash": [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12]
 	}
