@@ -28,47 +28,6 @@ var animation_textures = {}
 var current_animation: String = ""
 var direction: String = "south"
 
-func _get_property_list():
-	var properties = []
-	
-	if animation_data:		
-		# Add texture properties for manual override
-		for spritesheet in animation_data.required_spritesheets:
-			var prop_name = spritesheet + "_texture"
-			properties.append({
-				"name": prop_name,
-				"type": TYPE_OBJECT,
-				"usage": PROPERTY_USAGE_NO_EDITOR,
-				"hint": PROPERTY_HINT_RESOURCE_TYPE,
-				"hint_string": "Texture2D"
-			})
-	
-	return properties
-
-func _get(property):
-	if property.ends_with("_texture"):
-		var spritesheet = property.trim_suffix("_texture")
-		if spritesheet in animation_textures:
-			return animation_textures[spritesheet]
-	return null
-
-func _set(property, value):
-	if property.ends_with("_texture"):
-		var spritesheet = property.trim_suffix("_texture")
-		if value == null:
-			animation_textures.erase(spritesheet)
-		else:
-			animation_textures[spritesheet] = value
-			
-			# If this is a single spritesheet, apply it to all animations
-			if animation_data and animation_data.required_spritesheets.size() == 1:
-				for anim in animation_data.available_animations:
-					animation_textures[anim] = value
-			
-		_setup_sprite_frames()
-		return true
-	return false
-
 func _load_spritesheets():
 	if not animation_data:
 		return
@@ -86,17 +45,12 @@ func clear_textures_for_animations_that_no_longer_exist():
 		animation_textures.erase(anim_name)
 
 func load_textures_directly_from_required_spritesheets():
-	for spritesheet in animation_data.required_spritesheets:
+	for anim_name in animation_data.required_spritesheets:
+		var spritesheet = animation_data.required_spritesheets[anim_name]
 		var texture_path = _spritesheets_path.path_join(spritesheet + ".png")
 		var texture = load(texture_path)
 		if texture:
-			if spritesheet == "single":
-				# If using single spritesheet, apply to all animations
-				for anim_name in animation_data.available_animations:
-					animation_textures[anim_name] = texture
-			else:
-				# Otherwise load specific spritesheet
-				animation_textures[spritesheet] = texture
+			animation_textures[anim_name] = texture
 		else:
 			push_error("Failed to load spritesheet: %s" % texture_path)
 

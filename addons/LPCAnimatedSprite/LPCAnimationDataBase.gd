@@ -10,7 +10,7 @@ func _init():
 
 @export var available_animations: Array[String] = []
 
-@export var required_spritesheets: Array[String] = []
+@export var required_spritesheets: Dictionary = {}
 
 @export var available_directions: Dictionary = {}
 
