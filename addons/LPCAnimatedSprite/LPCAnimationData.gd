@@ -52,24 +52,24 @@ func _setup_data() -> void:
 	}
 
 	available_directions = {
-		"spellcast" : {"north": 0, "east": 1, "south": 2,"west": 3},
-		"thrust" : {"north": 0, "east": 1, "south": 2,"west": 3},
-		"walk" : {"north": 0, "east": 1, "south": 2,"west": 3},
-		"slash" : {"north": 0, "east": 1, "south": 2,"west": 3},
-		"shoot" : {"north": 0, "east": 1, "south": 2,"west": 3},
+		"spellcast" : {"north": 0, "west": 1, "south": 2,"east": 3},
+		"thrust" : {"north": 0, "west": 1, "south": 2,"east": 3},
+		"walk" : {"north": 0, "west": 1, "south": 2,"east": 3},
+		"slash" : {"north": 0, "west": 1, "south": 2,"east": 3},
+		"shoot" : {"north": 0, "west": 1, "south": 2,"east": 3},
 		"hurt" : {"south": 0},
 		"climb" : {"north": 0},
-		"idle" : {"north": 0, "east": 1, "south": 2,"west": 3},
-		"jump" : {"north": 0, "east": 1, "south": 2,"west": 3},
-		"sit" : {"north": 0, "east": 1, "south": 2,"west": 3},
-		"emote" : {"north": 0, "east": 1, "south": 2,"west": 3},
-		"run" : {"north": 0, "east": 1, "south": 2,"west": 3},
-		"combat_idle" : {"north": 0, "east": 1, "south": 2,"west": 3},
-		"backslash" : {"north": 0, "east": 1, "south": 2,"west": 3},
-		"halfslash" : {"north": 0, "east": 1, "south": 2,"west": 3},
-		"slash_oversize" : {"north": 0, "east": 1, "south": 2,"west": 3},
-		"slash_reverse_oversize" : {"north": 0, "east": 1, "south": 2,"west": 3},
-		"thrust_oversize" : {"north": 0, "east": 1, "south": 2,"west": 3}
+		"idle" : {"north": 0, "west": 1, "south": 2,"east": 3},
+		"jump" : {"north": 0, "west": 1, "south": 2,"east": 3},
+		"sit" : {"north": 0, "west": 1, "south": 2,"east": 3},
+		"emote" : {"north": 0, "west": 1, "south": 2,"east": 3},
+		"run" : {"north": 0, "west": 1, "south": 2,"east": 3},
+		"combat_idle" : {"north": 0, "west": 1, "south": 2,"east": 3},
+		"backslash" : {"north": 0, "west": 1, "south": 2,"east": 3},
+		"halfslash" : {"north": 0, "west": 1, "south": 2,"east": 3},
+		"slash_oversize" : {"north": 0, "west": 1, "south": 2,"east": 3},
+		"slash_reverse_oversize" : {"north": 0, "west": 1, "south": 2,"east": 3},
+		"thrust_oversize" : {"north": 0, "west": 1, "south": 2,"east": 3}
 	}
 
 	animation_frame_counts = {

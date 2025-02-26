@@ -113,8 +113,8 @@ func _setup_standard_frames(anim_key, texture, frame_count, frame_start, animati
 		sprite_frames.add_frame(anim_key, atlas)
 
 func _get_or_create_atlas(anim_key, frame_idx):
-	while _atlas_cache[anim_key].size() <= frame_idx:
-		_atlas_cache[anim_key].append(null)
+	if _atlas_cache[anim_key].size() <= frame_idx:
+		_atlas_cache[anim_key].resize(frame_idx + 1)
 	
 	if not _atlas_cache[anim_key][frame_idx]:
 		_atlas_cache[anim_key][frame_idx] = AtlasTexture.new()
