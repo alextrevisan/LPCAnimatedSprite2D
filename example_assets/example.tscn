@@ -8,24 +8,24 @@
 [ext_resource type="Script" uid="uid://co52sha1kv8jp" path="res://addons/LPCAnimatedSprite/LPCAnimationDataSingleSprite.gd" id="23_adsgq"]
 [ext_resource type="Texture2D" uid="uid://dwv0awte0g2pf" path="res://example_assets/sprout_lands/sprout_lands_actions.png" id="24_adsgq"]
 [ext_resource type="Texture2D" uid="uid://djxkmiv61fs4l" path="res://example_assets/sprout_lands/sprout_lands_walk_idle.png" id="24_ui0kx"]
-[ext_resource type="Texture2D" uid="uid://cx6jwaj01t6r" path="res://example_assets/LPC_male/standard/backslash.png" id="27_wrc4q"]
-[ext_resource type="Texture2D" uid="uid://brimvgeh0kbee" path="res://example_assets/LPC_male/standard/climb.png" id="28_2qf1g"]
-[ext_resource type="Texture2D" uid="uid://crl4dw67xqe33" path="res://example_assets/LPC_male/standard/combat_idle.png" id="29_avr6h"]
-[ext_resource type="Texture2D" uid="uid://dx43cemsaftin" path="res://example_assets/LPC_male/standard/emote.png" id="30_tr77i"]
-[ext_resource type="Texture2D" uid="uid://dh3n0c3pijrb6" path="res://example_assets/LPC_male/standard/halfslash.png" id="31_2u1qy"]
-[ext_resource type="Texture2D" uid="uid://4uun1upobeu1" path="res://example_assets/LPC_male/standard/hurt.png" id="32_b0ter"]
-[ext_resource type="Texture2D" uid="uid://c2gxxyogdj15q" path="res://example_assets/LPC_male/standard/idle.png" id="33_yijiq"]
-[ext_resource type="Texture2D" uid="uid://cd8tjkqyxh5ck" path="res://example_assets/LPC_male/standard/jump.png" id="34_srvo4"]
-[ext_resource type="Texture2D" uid="uid://duswah85qaryb" path="res://example_assets/LPC_male/standard/run.png" id="35_ocicr"]
-[ext_resource type="Texture2D" uid="uid://dluwqt612bkb5" path="res://example_assets/LPC_male/standard/shoot.png" id="36_nl2kq"]
-[ext_resource type="Texture2D" uid="uid://b877gay8ihl4g" path="res://example_assets/LPC_male/standard/sit.png" id="37_54ui4"]
-[ext_resource type="Texture2D" uid="uid://bwdqwatxjvgf6" path="res://example_assets/LPC_male/standard/slash.png" id="38_x1msa"]
-[ext_resource type="Texture2D" uid="uid://dqlqbw48nbdc0" path="res://example_assets/LPC_male/custom/slash_oversize.png" id="39_766yi"]
-[ext_resource type="Texture2D" uid="uid://bbo8bjd4jnlh7" path="res://example_assets/LPC_male/custom/slash_reverse_oversize.png" id="40_xtqfx"]
-[ext_resource type="Texture2D" uid="uid://bkobkfop365t" path="res://example_assets/LPC_male/standard/spellcast.png" id="41_w3ng4"]
-[ext_resource type="Texture2D" uid="uid://beuujjjo7t60h" path="res://example_assets/LPC_male/standard/thrust.png" id="42_lyxfg"]
-[ext_resource type="Texture2D" uid="uid://6tlv8qhdisbf" path="res://example_assets/LPC_male/custom/thrust_oversize.png" id="43_rhknm"]
-[ext_resource type="Texture2D" uid="uid://pdxfj4dysxcp" path="res://example_assets/LPC_male/standard/walk.png" id="44_bhkru"]
+[ext_resource type="Texture2D" uid="uid://djgiuli6njvq1" path="res://example_assets/LPC_male/standard/backslash.png" id="27_wrc4q"]
+[ext_resource type="Texture2D" uid="uid://dfmbpocpdsoga" path="res://example_assets/LPC_male/standard/climb.png" id="28_2qf1g"]
+[ext_resource type="Texture2D" uid="uid://bjfint4bbf68h" path="res://example_assets/LPC_male/standard/combat_idle.png" id="29_avr6h"]
+[ext_resource type="Texture2D" uid="uid://be0yka3gqv5ns" path="res://example_assets/LPC_male/standard/emote.png" id="30_tr77i"]
+[ext_resource type="Texture2D" uid="uid://1pqs3m0fpgyy" path="res://example_assets/LPC_male/standard/halfslash.png" id="31_2u1qy"]
+[ext_resource type="Texture2D" uid="uid://c52b4p4nhw1g8" path="res://example_assets/LPC_male/standard/hurt.png" id="32_b0ter"]
+[ext_resource type="Texture2D" uid="uid://bmuj01jjaq0h5" path="res://example_assets/LPC_male/standard/idle.png" id="33_yijiq"]
+[ext_resource type="Texture2D" uid="uid://dtsmf2tg72wav" path="res://example_assets/LPC_male/standard/jump.png" id="34_srvo4"]
+[ext_resource type="Texture2D" uid="uid://eoocmluqoh65" path="res://example_assets/LPC_male/standard/run.png" id="35_ocicr"]
+[ext_resource type="Texture2D" uid="uid://nme3vhinbns8" path="res://example_assets/LPC_male/standard/shoot.png" id="36_nl2kq"]
+[ext_resource type="Texture2D" uid="uid://d4mmg35owrhal" path="res://example_assets/LPC_male/standard/sit.png" id="37_54ui4"]
+[ext_resource type="Texture2D" uid="uid://cq8wnxbqd21jq" path="res://example_assets/LPC_male/standard/slash.png" id="38_x1msa"]
+[ext_resource type="Texture2D" uid="uid://gub7pm76sw4n" path="res://example_assets/LPC_male/custom/slash_oversize.png" id="39_766yi"]
+[ext_resource type="Texture2D" uid="uid://cxvcpuniafvhf" path="res://example_assets/LPC_male/custom/slash_reverse_oversize.png" id="40_xtqfx"]
+[ext_resource type="Texture2D" uid="uid://dvc45da408c2s" path="res://example_assets/LPC_male/standard/spellcast.png" id="41_w3ng4"]
+[ext_resource type="Texture2D" uid="uid://cgcel1ekgbk4" path="res://example_assets/LPC_male/standard/thrust.png" id="42_lyxfg"]
+[ext_resource type="Texture2D" uid="uid://dkomo6mt7r7t" path="res://example_assets/LPC_male/custom/thrust_oversize.png" id="43_rhknm"]
+[ext_resource type="Texture2D" uid="uid://co65p30l2imkt" path="res://example_assets/LPC_male/standard/walk.png" id="44_bhkru"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_adsgq"]
 atlas = ExtResource("27_wrc4q")
@@ -9094,7 +9094,6 @@ metadata/_custom_type_script = "uid://dkrbnyjrssjqi"
 
 [node name="example" type="Node2D"]
 script = ExtResource("1_7upka")
-metadata/_edit_horizontal_guides_ = [183.0]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -9131,7 +9130,7 @@ horizontal_alignment = 1
 position = Vector2(189, 120)
 sprite_frames = SubResource("SpriteFrames_k5ttb")
 animation = &"spellcast_south"
-frame_progress = 0.902968
+frame_progress = 0.739282
 script = ExtResource("3_6q524")
 spritesheets_path = "res://example_assets/LPC_male"
 animation_data = SubResource("Resource_vykx6")
@@ -9144,6 +9143,140 @@ anchor_right = 1.0
 offset_top = 28.0
 offset_bottom = 48.0
 grow_horizontal = 2
+selected = 0
+item_count = 66
+popup/item_0/text = "spellcast_east"
+popup/item_0/id = 0
+popup/item_1/text = "spellcast_north"
+popup/item_1/id = 1
+popup/item_2/text = "spellcast_south"
+popup/item_2/id = 2
+popup/item_3/text = "spellcast_west"
+popup/item_3/id = 3
+popup/item_4/text = "thrust_east"
+popup/item_4/id = 4
+popup/item_5/text = "thrust_north"
+popup/item_5/id = 5
+popup/item_6/text = "thrust_south"
+popup/item_6/id = 6
+popup/item_7/text = "thrust_west"
+popup/item_7/id = 7
+popup/item_8/text = "walk_east"
+popup/item_8/id = 8
+popup/item_9/text = "walk_north"
+popup/item_9/id = 9
+popup/item_10/text = "walk_south"
+popup/item_10/id = 10
+popup/item_11/text = "walk_west"
+popup/item_11/id = 11
+popup/item_12/text = "slash_east"
+popup/item_12/id = 12
+popup/item_13/text = "slash_north"
+popup/item_13/id = 13
+popup/item_14/text = "slash_south"
+popup/item_14/id = 14
+popup/item_15/text = "slash_west"
+popup/item_15/id = 15
+popup/item_16/text = "shoot_east"
+popup/item_16/id = 16
+popup/item_17/text = "shoot_north"
+popup/item_17/id = 17
+popup/item_18/text = "shoot_south"
+popup/item_18/id = 18
+popup/item_19/text = "shoot_west"
+popup/item_19/id = 19
+popup/item_20/text = "hurt_south"
+popup/item_20/id = 20
+popup/item_21/text = "climb_north"
+popup/item_21/id = 21
+popup/item_22/text = "idle_east"
+popup/item_22/id = 22
+popup/item_23/text = "idle_north"
+popup/item_23/id = 23
+popup/item_24/text = "idle_south"
+popup/item_24/id = 24
+popup/item_25/text = "idle_west"
+popup/item_25/id = 25
+popup/item_26/text = "jump_east"
+popup/item_26/id = 26
+popup/item_27/text = "jump_north"
+popup/item_27/id = 27
+popup/item_28/text = "jump_south"
+popup/item_28/id = 28
+popup/item_29/text = "jump_west"
+popup/item_29/id = 29
+popup/item_30/text = "sit_east"
+popup/item_30/id = 30
+popup/item_31/text = "sit_north"
+popup/item_31/id = 31
+popup/item_32/text = "sit_south"
+popup/item_32/id = 32
+popup/item_33/text = "sit_west"
+popup/item_33/id = 33
+popup/item_34/text = "emote_east"
+popup/item_34/id = 34
+popup/item_35/text = "emote_north"
+popup/item_35/id = 35
+popup/item_36/text = "emote_south"
+popup/item_36/id = 36
+popup/item_37/text = "emote_west"
+popup/item_37/id = 37
+popup/item_38/text = "run_east"
+popup/item_38/id = 38
+popup/item_39/text = "run_north"
+popup/item_39/id = 39
+popup/item_40/text = "run_south"
+popup/item_40/id = 40
+popup/item_41/text = "run_west"
+popup/item_41/id = 41
+popup/item_42/text = "combat_idle_east"
+popup/item_42/id = 42
+popup/item_43/text = "combat_idle_north"
+popup/item_43/id = 43
+popup/item_44/text = "combat_idle_south"
+popup/item_44/id = 44
+popup/item_45/text = "combat_idle_west"
+popup/item_45/id = 45
+popup/item_46/text = "backslash_east"
+popup/item_46/id = 46
+popup/item_47/text = "backslash_north"
+popup/item_47/id = 47
+popup/item_48/text = "backslash_south"
+popup/item_48/id = 48
+popup/item_49/text = "backslash_west"
+popup/item_49/id = 49
+popup/item_50/text = "halfslash_east"
+popup/item_50/id = 50
+popup/item_51/text = "halfslash_north"
+popup/item_51/id = 51
+popup/item_52/text = "halfslash_south"
+popup/item_52/id = 52
+popup/item_53/text = "halfslash_west"
+popup/item_53/id = 53
+popup/item_54/text = "slash_oversize_east"
+popup/item_54/id = 54
+popup/item_55/text = "slash_oversize_north"
+popup/item_55/id = 55
+popup/item_56/text = "slash_oversize_south"
+popup/item_56/id = 56
+popup/item_57/text = "slash_oversize_west"
+popup/item_57/id = 57
+popup/item_58/text = "slash_reverse_oversize_east"
+popup/item_58/id = 58
+popup/item_59/text = "slash_reverse_oversize_north"
+popup/item_59/id = 59
+popup/item_60/text = "slash_reverse_oversize_south"
+popup/item_60/id = 60
+popup/item_61/text = "slash_reverse_oversize_west"
+popup/item_61/id = 61
+popup/item_62/text = "thrust_oversize_east"
+popup/item_62/id = 62
+popup/item_63/text = "thrust_oversize_north"
+popup/item_63/id = 63
+popup/item_64/text = "thrust_oversize_south"
+popup/item_64/id = 64
+popup/item_65/text = "thrust_oversize_west"
+popup/item_65/id = 65
 
 [node name="Control2" type="Control" parent="CanvasLayer/GridContainer"]
 layout_mode = 2
@@ -9163,7 +9296,7 @@ horizontal_alignment = 1
 position = Vector2(199, 121)
 sprite_frames = SubResource("SpriteFrames_vc2ft")
 animation = &"spellcast_south"
-frame_progress = 0.902968
+frame_progress = 0.739282
 script = ExtResource("3_6q524")
 spritesheets_path = "res://example_assets/LPC/"
 animation_data = SubResource("Resource_modek")
@@ -9176,6 +9309,140 @@ anchor_right = 1.0
 offset_top = 28.0
 offset_bottom = 48.0
 grow_horizontal = 2
+selected = 0
+item_count = 66
+popup/item_0/text = "spellcast_east"
+popup/item_0/id = 0
+popup/item_1/text = "spellcast_north"
+popup/item_1/id = 1
+popup/item_2/text = "spellcast_south"
+popup/item_2/id = 2
+popup/item_3/text = "spellcast_west"
+popup/item_3/id = 3
+popup/item_4/text = "thrust_east"
+popup/item_4/id = 4
+popup/item_5/text = "thrust_north"
+popup/item_5/id = 5
+popup/item_6/text = "thrust_south"
+popup/item_6/id = 6
+popup/item_7/text = "thrust_west"
+popup/item_7/id = 7
+popup/item_8/text = "walk_east"
+popup/item_8/id = 8
+popup/item_9/text = "walk_north"
+popup/item_9/id = 9
+popup/item_10/text = "walk_south"
+popup/item_10/id = 10
+popup/item_11/text = "walk_west"
+popup/item_11/id = 11
+popup/item_12/text = "slash_east"
+popup/item_12/id = 12
+popup/item_13/text = "slash_north"
+popup/item_13/id = 13
+popup/item_14/text = "slash_south"
+popup/item_14/id = 14
+popup/item_15/text = "slash_west"
+popup/item_15/id = 15
+popup/item_16/text = "shoot_east"
+popup/item_16/id = 16
+popup/item_17/text = "shoot_north"
+popup/item_17/id = 17
+popup/item_18/text = "shoot_south"
+popup/item_18/id = 18
+popup/item_19/text = "shoot_west"
+popup/item_19/id = 19
+popup/item_20/text = "hurt_south"
+popup/item_20/id = 20
+popup/item_21/text = "climb_north"
+popup/item_21/id = 21
+popup/item_22/text = "idle_east"
+popup/item_22/id = 22
+popup/item_23/text = "idle_north"
+popup/item_23/id = 23
+popup/item_24/text = "idle_south"
+popup/item_24/id = 24
+popup/item_25/text = "idle_west"
+popup/item_25/id = 25
+popup/item_26/text = "jump_east"
+popup/item_26/id = 26
+popup/item_27/text = "jump_north"
+popup/item_27/id = 27
+popup/item_28/text = "jump_south"
+popup/item_28/id = 28
+popup/item_29/text = "jump_west"
+popup/item_29/id = 29
+popup/item_30/text = "sit_east"
+popup/item_30/id = 30
+popup/item_31/text = "sit_north"
+popup/item_31/id = 31
+popup/item_32/text = "sit_south"
+popup/item_32/id = 32
+popup/item_33/text = "sit_west"
+popup/item_33/id = 33
+popup/item_34/text = "emote_east"
+popup/item_34/id = 34
+popup/item_35/text = "emote_north"
+popup/item_35/id = 35
+popup/item_36/text = "emote_south"
+popup/item_36/id = 36
+popup/item_37/text = "emote_west"
+popup/item_37/id = 37
+popup/item_38/text = "run_east"
+popup/item_38/id = 38
+popup/item_39/text = "run_north"
+popup/item_39/id = 39
+popup/item_40/text = "run_south"
+popup/item_40/id = 40
+popup/item_41/text = "run_west"
+popup/item_41/id = 41
+popup/item_42/text = "combat_idle_east"
+popup/item_42/id = 42
+popup/item_43/text = "combat_idle_north"
+popup/item_43/id = 43
+popup/item_44/text = "combat_idle_south"
+popup/item_44/id = 44
+popup/item_45/text = "combat_idle_west"
+popup/item_45/id = 45
+popup/item_46/text = "backslash_east"
+popup/item_46/id = 46
+popup/item_47/text = "backslash_north"
+popup/item_47/id = 47
+popup/item_48/text = "backslash_south"
+popup/item_48/id = 48
+popup/item_49/text = "backslash_west"
+popup/item_49/id = 49
+popup/item_50/text = "halfslash_east"
+popup/item_50/id = 50
+popup/item_51/text = "halfslash_north"
+popup/item_51/id = 51
+popup/item_52/text = "halfslash_south"
+popup/item_52/id = 52
+popup/item_53/text = "halfslash_west"
+popup/item_53/id = 53
+popup/item_54/text = "slash_oversize_east"
+popup/item_54/id = 54
+popup/item_55/text = "slash_oversize_north"
+popup/item_55/id = 55
+popup/item_56/text = "slash_oversize_south"
+popup/item_56/id = 56
+popup/item_57/text = "slash_oversize_west"
+popup/item_57/id = 57
+popup/item_58/text = "slash_reverse_oversize_east"
+popup/item_58/id = 58
+popup/item_59/text = "slash_reverse_oversize_north"
+popup/item_59/id = 59
+popup/item_60/text = "slash_reverse_oversize_south"
+popup/item_60/id = 60
+popup/item_61/text = "slash_reverse_oversize_west"
+popup/item_61/id = 61
+popup/item_62/text = "thrust_oversize_east"
+popup/item_62/id = 62
+popup/item_63/text = "thrust_oversize_north"
+popup/item_63/id = 63
+popup/item_64/text = "thrust_oversize_south"
+popup/item_64/id = 64
+popup/item_65/text = "thrust_oversize_west"
+popup/item_65/id = 65
 
 [node name="Control3" type="Control" parent="CanvasLayer/GridContainer"]
 layout_mode = 2
@@ -9195,7 +9462,7 @@ horizontal_alignment = 1
 position = Vector2(223, 126)
 sprite_frames = SubResource("SpriteFrames_eyhrs")
 animation = &"idle_south"
-frame_progress = 0.81744
+frame_progress = 0.869627
 script = ExtResource("3_6q524")
 spritesheets_path = "res://example_assets/sprout_lands/"
 animation_data = SubResource("Resource_wt803")
@@ -9208,6 +9475,48 @@ anchor_right = 1.0
 offset_top = 28.0
 offset_bottom = 48.0
 grow_horizontal = 2
+selected = 0
+item_count = 20
+popup/item_0/text = "idle_east"
+popup/item_0/id = 0
+popup/item_1/text = "idle_north"
+popup/item_1/id = 1
+popup/item_2/text = "idle_south"
+popup/item_2/id = 2
+popup/item_3/text = "idle_west"
+popup/item_3/id = 3
+popup/item_4/text = "walk_east"
+popup/item_4/id = 4
+popup/item_5/text = "walk_north"
+popup/item_5/id = 5
+popup/item_6/text = "walk_south"
+popup/item_6/id = 6
+popup/item_7/text = "walk_west"
+popup/item_7/id = 7
+popup/item_8/text = "tiling_east"
+popup/item_8/id = 8
+popup/item_9/text = "tiling_north"
+popup/item_9/id = 9
+popup/item_10/text = "tiling_south"
+popup/item_10/id = 10
+popup/item_11/text = "tiling_west"
+popup/item_11/id = 11
+popup/item_12/text = "chopping_east"
+popup/item_12/id = 12
+popup/item_13/text = "chopping_north"
+popup/item_13/id = 13
+popup/item_14/text = "chopping_south"
+popup/item_14/id = 14
+popup/item_15/text = "chopping_west"
+popup/item_15/id = 15
+popup/item_16/text = "watering_east"
+popup/item_16/id = 16
+popup/item_17/text = "watering_north"
+popup/item_17/id = 17
+popup/item_18/text = "watering_south"
+popup/item_18/id = 18
+popup/item_19/text = "watering_west"
+popup/item_19/id = 19
 
 [node name="Control4" type="Control" parent="CanvasLayer/GridContainer"]
 layout_mode = 2
