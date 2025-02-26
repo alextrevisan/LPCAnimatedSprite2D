@@ -2,24 +2,21 @@
 @icon("res://addons/LPCAnimatedSprite/icon2d.png")
 class_name LPCAnimatedSprite2D extends AnimatedSprite2D
 
-var _spritesheets_path: String:
-	set(value):
-		_spritesheets_path = value
-		_load_spritesheets()
-		_setup_sprite_frames()
+var _spritesheets_path: String
+var _atlas_cache = {}
 
 @export_dir var spritesheets_path: String:
 	set(value):
-		_spritesheets_path = value
+		if _spritesheets_path != value:
+			_spritesheets_path = value
+			_refresh_sprites()
 	get:
 		return _spritesheets_path
 
 @export var animation_data: LPCAnimationDataBase:
 	set(value):
 		animation_data = value
-		_setup_animation_properties()
-		_load_spritesheets()
-		_setup_sprite_frames()
+		_refresh_sprites()
 		notify_property_list_changed()
 	get:
 		return animation_data
@@ -28,23 +25,23 @@ var animation_textures = {}
 var current_animation: String = ""
 var direction: String = "south"
 
-func _load_spritesheets():
+func _refresh_sprites():
 	if not animation_data:
 		return
-	
-	clear_textures_for_animations_that_no_longer_exist()
-	load_textures_directly_from_required_spritesheets()
+	_setup_animation_properties()
+	_load_spritesheets()
+	_setup_sprite_frames()
 
-func clear_textures_for_animations_that_no_longer_exist():
-	var textures_to_remove = []
-	for anim_name in animation_textures:
+func _load_spritesheets():
+	_clear_unused_textures()
+	_load_required_textures()
+
+func _clear_unused_textures():
+	for anim_name in animation_textures.keys():
 		if not anim_name in animation_data.available_animations:
-			textures_to_remove.append(anim_name)
-	
-	for anim_name in textures_to_remove:
-		animation_textures.erase(anim_name)
+			animation_textures.erase(anim_name)
 
-func load_textures_directly_from_required_spritesheets():
+func _load_required_textures():
 	for anim_name in animation_data.required_spritesheets:
 		var spritesheet = animation_data.required_spritesheets[anim_name]
 		var texture_path = _spritesheets_path.path_join(spritesheet + ".png")
@@ -55,9 +52,6 @@ func load_textures_directly_from_required_spritesheets():
 			push_error("Failed to load spritesheet: %s" % texture_path)
 
 func _setup_animation_properties():
-	if not animation_data:
-		return
-	
 	if not sprite_frames:
 		sprite_frames = SpriteFrames.new()
 	
@@ -70,6 +64,7 @@ func _setup_sprite_frames():
 		return
 
 	sprite_frames.clear_all()
+	_atlas_cache.clear()
 	
 	for anim_name in animation_data.available_animations:
 		for dir in animation_data.available_directions[anim_name].keys():
@@ -81,7 +76,7 @@ func _setup_sprite_frames():
 			
 			var texture = animation_textures.get(anim_name)
 			if not texture:
-				print("No texture for animation: ", anim_name)
+				push_warning("No texture for animation: %s" % anim_name)
 				continue
 				
 			var frame_count = animation_data.animation_frame_counts[anim_name]
@@ -92,19 +87,41 @@ func _setup_sprite_frames():
 			var base_frame_size = animation_data.base_animation_size
 			var frame_start = animation_data.initial_sprite_indices[anim_name]
 			
+			if not _atlas_cache.has(anim_key):
+				_atlas_cache[anim_key] = []
+			
 			if custom_frames:
-				for frame_idx in custom_frames:
-					var atlas = AtlasTexture.new()
-					atlas.atlas = texture
-					atlas.region = Rect2(frame_idx * frame_size, animation_rows * base_frame_size + (direction_offset * frame_size), frame_size, frame_size)
-					sprite_frames.add_frame(anim_key, atlas)
+				_setup_custom_frames(anim_key, texture, custom_frames, animation_rows, base_frame_size, direction_offset, frame_size)
 			else:
-				for frame_idx in range(frame_count):
-					var atlas = AtlasTexture.new()
-					atlas.atlas = texture
-					atlas.region = Rect2((frame_idx + frame_start) * frame_size, animation_rows * base_frame_size + (direction_offset * frame_size), frame_size, frame_size)
-					sprite_frames.add_frame(anim_key, atlas)
+				_setup_standard_frames(anim_key, texture, frame_count, frame_start, animation_rows, base_frame_size, direction_offset, frame_size)
 	
+	_play_current_animation()
+
+func _setup_custom_frames(anim_key, texture, custom_frames, animation_rows, base_frame_size, direction_offset, frame_size):
+	for i in range(custom_frames.size()):
+		var frame_idx = custom_frames[i]
+		var atlas = _get_or_create_atlas(anim_key, i)
+		atlas.atlas = texture
+		atlas.region = Rect2(frame_idx * frame_size, animation_rows * base_frame_size + (direction_offset * frame_size), frame_size, frame_size)
+		sprite_frames.add_frame(anim_key, atlas)
+
+func _setup_standard_frames(anim_key, texture, frame_count, frame_start, animation_rows, base_frame_size, direction_offset, frame_size):
+	for i in range(frame_count):
+		var atlas = _get_or_create_atlas(anim_key, i)
+		atlas.atlas = texture
+		atlas.region = Rect2((i + frame_start) * frame_size, animation_rows * base_frame_size + (direction_offset * frame_size), frame_size, frame_size)
+		sprite_frames.add_frame(anim_key, atlas)
+
+func _get_or_create_atlas(anim_key, frame_idx):
+	while _atlas_cache[anim_key].size() <= frame_idx:
+		_atlas_cache[anim_key].append(null)
+	
+	if not _atlas_cache[anim_key][frame_idx]:
+		_atlas_cache[anim_key][frame_idx] = AtlasTexture.new()
+	
+	return _atlas_cache[anim_key][frame_idx]
+
+func _play_current_animation():
 	if current_animation and direction:
 		var anim_key = current_animation + "_" + direction
 		if sprite_frames.has_animation(anim_key):
@@ -123,18 +140,14 @@ func play_animation(anim_name: String = "idle", dir: String = "south"):
 	current_animation = anim_name
 	direction = dir
 	
-	var anim_key = current_animation + "_" + direction
-	if sprite_frames.has_animation(anim_key):
-		play(anim_key)
+	_play_current_animation()
 
 func _ready():
 	if not sprite_frames:
 		set_sprite_frames(SpriteFrames.new())
 	if not animation_data:
 		animation_data = LPCAnimationData.new()
-	_setup_animation_properties()
-	_load_spritesheets()
-	_setup_sprite_frames()
+	_refresh_sprites()
 
 func _notification(what):
 	if what == NOTIFICATION_EDITOR_POST_SAVE:
