@@ -58,7 +58,7 @@ func _setup_data() -> void:
 		"slash" : {"north": 0, "east": 1, "south": 2,"west": 3},
 		"shoot" : {"north": 0, "east": 1, "south": 2,"west": 3},
 		"hurt" : {"south": 0},
-		"climb" : {"north": 0, "east": 1, "south": 2,"west": 3},
+		"climb" : {"north": 0},
 		"idle" : {"north": 0, "east": 1, "south": 2,"west": 3},
 		"jump" : {"north": 0, "east": 1, "south": 2,"west": 3},
 		"sit" : {"north": 0, "east": 1, "south": 2,"west": 3},
