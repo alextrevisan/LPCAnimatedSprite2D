@@ -31,24 +31,24 @@ func _setup_data() -> void:
 	]
 
 	required_spritesheets = {
-		"spellcast": "spellcast",
-		"thrust": "thrust",
-		"walk": "walk",
-		"slash": "slash",
-		"shoot": "shoot",
-		"hurt": "hurt",
-		"climb": "climb",
-		"idle": "idle",
-		"jump": "jump",
-		"sit": "sit",
-		"emote": "emote",
-		"run": "run",
-		"combat_idle": "combat_idle",
-		"backslash": "backslash",
-		"halfslash": "halfslash",
-		"slash_oversize": "slash_oversize",
-		"slash_reverse_oversize": "slash_reverse_oversize",
-		"thrust_oversize": "thrust_oversize"
+		"spellcast": "standard/spellcast",
+		"thrust": "standard/thrust",
+		"walk": "standard/walk",
+		"slash": "standard/slash",
+		"shoot": "standard/shoot",
+		"hurt": "standard/hurt",
+		"climb": "standard/climb",
+		"idle": "standard/idle",
+		"jump": "standard/jump",
+		"sit": "standard/sit",
+		"emote": "standard/emote",
+		"run": "standard/run",
+		"combat_idle": "standard/combat_idle",
+		"backslash": "standard/backslash",
+		"halfslash": "standard/halfslash",
+		"slash_oversize": "custom/slash_oversize",
+		"slash_reverse_oversize": "custom/slash_reverse_oversize",
+		"thrust_oversize": "custom/thrust_oversize"
 	}
 
 	available_directions = {
