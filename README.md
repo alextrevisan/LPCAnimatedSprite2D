@@ -28,9 +28,9 @@ Add it to the scene tree
 
 ![image](https://raw.githubusercontent.com/alextrevisan/LPCAnimatedSprite2D/main/new%20node.png)
 
-Then add your spritesheet with the names:
+Then select the folder containing the single.png spritesheet or the new structured spritesheet downloaded directly from the generator
 
-![image](https://raw.githubusercontent.com/alextrevisan/LPCAnimatedSprite2D/main/create_lpc.gif)
+![image](https://raw.githubusercontent.com/alextrevisan/LPCAnimatedSprite2D/main/spritesheets.png)
 
 On the parent node you can call the animations:
 
@@ -40,13 +40,18 @@ extends Node2D
 @onready var player = $LPCAnimatedSprite2D as LPCAnimatedSprite2D
 
 func _ready():
-	player.play(LPCAnimatedSprite2D.LPCAnimation.WALK_UP)
+	player.play("walk_south")
 ```
 
-## Support for Oversized Weapons
-Just select the appropriate Sprite Type
+## Extending the animations
+If you have another spritesheet with custom animations, just add the spritesheet to the project, and create a custom data, extending `LPCAnimationData`, and adding the custom animations to every property of the data.
 
-If using component sprites rather than a a pre-built spritesheet, pay attention to the order in which they are configured as it will influence visibility.
+## Custom spritesheets
+Now LPCAnimatedSprite2D can also handle custom spritesheets, just place the new spritesheet folder inside the project, create a custom data as in the example sprout_lands.
+
+
+## Support for Oversized Weapons
+Oversized weapons are now integrated in the LPCAnimatedSprite2D plugin.
 
 ## Version number
 
